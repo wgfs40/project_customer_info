@@ -5,9 +5,14 @@
   --foreground: #171717;
 
   /* --- 1. CONSTANTES DE DISEÑO Y VISTAS --- */
-  --teal-color: #00bfa5; /* Verde Azulado (Acento) */
-  --orange-color: #ff8c00; /* Naranja (Principal / Acción) */
-  --blue-color: #0047ab; /* Azul Oscuro (Marca / Texto Principal) */
+
+  /* Colores personalizados */
+  --color-teal: #00bfa5;
+  --color-orange: #ff8c00;
+  --color-blue: #0047ab;
+
+  /* Texto principal */
+  --color-text-principal: var(--color-blue);
 }
 
 @theme inline {

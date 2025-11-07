@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 // Definimos los enlaces de navegación
 const links = [
   { name: "Inicio", href: "/" },
-  { name: "acerca-de-mi", href: "/informes" },
-  { name: "servicios", href: "/clientes" },
-  { name: "contacto", href: "/docs" },
+  { name: "acerca-de-mi", href: "/about" },
+  { name: "servicios", href: "/services" },
+  { name: "contacto", href: "/contacts" },
   { name: "blog", href: "/blog" },
   // { name: "carrito", href: "/shopping-cart" },
   // { name: "login", href: "/login" },

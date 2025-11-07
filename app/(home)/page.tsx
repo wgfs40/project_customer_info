@@ -1,7 +1,13 @@
+import HomeCarousel from "@/components/home/home-carousel";
+import HomeFeaturedServices from "@/components/home/home-featured-services";
+import HomeTitle from "@/components/home/home-title";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      preventDefault
-    </main>
+    <section className="space-y-10">
+      <HomeTitle />
+      <HomeCarousel />
+      <HomeFeaturedServices />
+    </section>
   );
 }
