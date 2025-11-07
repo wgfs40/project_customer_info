@@ -16,42 +16,42 @@ const ServiceView = () => {
       icon: BarChart3,
       title: "Análisis de Datos",
       description: "Transformamos datos brutos en estrategias accionables.",
-      color: "ORANGE_COLOR",
+      color: "text-principal-text",
     },
     {
       icon: Palette,
       title: "Diseño Creativo",
       description: "Identidad de marca y contenido visual impactante.",
-      color: "TEAL_COLOR",
+      color: "text-accent-text",
     },
     {
       icon: Mail,
       title: "Email Marketing",
       description: "Campañas de correo electrónico que generan lealtad.",
-      color: "ORANGE_COLOR",
+      color: "text-action-text",
     },
     {
       icon: Globe,
       title: "Desarrollo Web",
       description: "Páginas rápidas, seguras y optimizadas para conversión.",
-      color: "TEAL_COLOR",
+      color: "text-accent-text",
     },
     {
       icon: ShieldCheck,
       title: "Reputación Online",
       description: "Manejo de crisis y construcción de credibilidad digital.",
-      color: "ORANGE_COLOR",
+      color: "text-action-text",
     },
     {
       icon: Megaphone,
       title: "Relaciones Públicas",
       description: "Visibilidad en medios y alianzas estratégicas.",
-      color: "TEAL_COLOR",
+      color: "text-accent-text",
     },
   ];
   return (
     <section className="space-y-10">
-      <h2 className="text-3xl font-extrabold mb-8 text-center border-b pb-2">
+      <h2 className="text-3xl font-extrabold mb-8 text-principal-text text-center border-b pb-2">
         Nuestros Servicios
       </h2>
       {/* Barra de Búsqueda de Servicios */}

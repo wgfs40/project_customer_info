@@ -1,7 +1,9 @@
 const ContactForm = () => {
   return (
     <div className="max-w-xl mx-auto bg-white p-8 md:p-10 rounded-xl shadow-2xl border-t-8 border-orange-500">
-      <h2 className="text-3xl font-extrabold mb-6 text-center">Contactanos</h2>
+      <h2 className="text-3xl font-extrabold mb-6 text-center text-principal-text">
+        Contactanos
+      </h2>
       <form>
         <div className="mb-5">
           <label
@@ -14,7 +16,7 @@ const ContactForm = () => {
             type="text"
             id="nombre"
             required
-            className={`w-full p-3 border border-gray-300 rounded-xl  focus:ring-1  transition duration-200`}
+            className={`w-full p-3 border border-gray-300 rounded-xl  focus:ring-1 focus:border-accent-text focus:ring-accent-text transition duration-200`}
           />
         </div>
         <div className="mb-5">
@@ -28,7 +30,7 @@ const ContactForm = () => {
             type="email"
             id="correo"
             required
-            className={`w-full p-3 border border-gray-300 rounded-xl focus:ring-1 transition duration-200`}
+            className={`w-full p-3 border  border-gray-300 rounded-xl  focus:border-accent-text focus:ring-accent-text transition duration-200`}
           />
         </div>
         <div className="mb-8">
@@ -42,7 +44,7 @@ const ContactForm = () => {
             id="mensaje"
             rows={6}
             required
-            className={`w-full p-3 border border-gray-300 rounded-xl focus:ring-1 transition duration-200 resize-none`}
+            className={`w-full p-3 border border-gray-300 rounded-xl focus:ring-1 focus:border-accent-text focus:ring-accent-text transition duration-200 resize-none`}
           ></textarea>
         </div>
 
@@ -50,7 +52,7 @@ const ContactForm = () => {
         <div className="text-center">
           <button
             type="submit"
-            className={`w-full md:w-auto px-10 py-3 bg-orange-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-orange-700 transition duration-300 transform hover:scale-105`}
+            className={`w-full md:w-auto px-10 py-3 bg-action-text text-white font-bold text-lg rounded-full shadow-lg hover:bg-orange-700 transition duration-300 transform hover:scale-105`}
           >
             Registro
           </button>

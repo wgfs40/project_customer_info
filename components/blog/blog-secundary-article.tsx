@@ -18,7 +18,7 @@ const BlogSecundaryArticle = () => {
           key={index}
           className="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition duration-300"
         >
-          <h4 className={`font-bold text-lg text-orange-300 mb-2`}>
+          <h4 className={`font-bold text-lg text-action-text mb-2`}>
             {article.title}
           </h4>
           <p className="text-gray-600 text-sm mb-3">{article.description}</p>

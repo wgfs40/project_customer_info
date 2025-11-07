@@ -1,7 +1,7 @@
 const BlogPrincipalPublication = () => {
   return (
     <div className="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-blue-500">
-      <h3 className="text-2xl font-bold text-gray-800 mb-3">
+      <h3 className="text-2xl font-bold text-accent-text mb-3">
         Título: Cómo la IA está Cambiando el SEO
       </h3>
       <p className="text-sm text-gray-500 mb-4">

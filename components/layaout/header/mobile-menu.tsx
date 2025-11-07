@@ -4,16 +4,10 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-// Definimos los enlaces de navegación para móvil (pueden ser diferentes)
-const mobileLinks = [
-  { name: "Inicio", href: "/" },
-  { name: "Clientes", href: "/clientes" },
-  { name: "Añadir Cliente", href: "/clientes/nuevo" },
-  { name: "Informes", href: "/informes" },
-  { name: "Configuración", href: "/configuracion" },
-  { name: "Soporte", href: "/soporte" },
-];
+import { links } from "@/types/menu-link";
+import ShoppingCartAction from "./shopping-cart-actions";
+import UserActions from "./user-actions";
+import Logo from "./logo";
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +17,7 @@ const MobileMenu = () => {
     <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         aria-expanded={isOpen}
       >
@@ -35,9 +29,7 @@ const MobileMenu = () => {
           <div className="pt-5 pb-6 px-5">
             <div className="flex items-center justify-between">
               <div>
-                <Link href="/" className="text-xl font-bold text-gray-800">
-                  Customer Info
-                </Link>
+                <Logo />
               </div>
               <div className="-mr-2">
                 <button
@@ -52,7 +44,7 @@ const MobileMenu = () => {
 
             <div className="mt-6">
               <nav className="grid gap-y-4">
-                {mobileLinks.map((link) => {
+                {links.map((link) => {
                   const isActive = pathname === link.href;
 
                   return (
@@ -71,25 +63,11 @@ const MobileMenu = () => {
                   );
                 })}
               </nav>
-            </div>
-
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <Link
-                href="/search"
-                className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Buscar
-              </Link>
-              <p className="mt-6 text-center text-base font-medium text-gray-500">
-                <Link
-                  href="/login"
-                  className="text-blue-600 hover:text-blue-500"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Iniciar Sesión
-                </Link>
-              </p>
+              {/* Botones de accion para el carrito de compra y perfil de usuario */}
+              <div className="flex items-center pl-5 space-x-5">
+                <ShoppingCartAction />
+                <UserActions />
+              </div>
             </div>
           </div>
         </div>

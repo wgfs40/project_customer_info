@@ -13,6 +13,8 @@
 
   /* Texto principal */
   --color-text-principal: var(--color-blue);
+  --color-text-accent: var(--color-teal);
+  --color-text-action: var(--color-orange);
 }
 
 @theme inline {
@@ -20,6 +22,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  ----color-teal: var(--color-teal);
+  --color-orange-action: var(--color-orange);
+  --color-blue-principal: var(--color-blue);
+  --color-principal-text: var(--color-text-principal);
+  --color-accent-text: var(--color-text-accent);
+  --color-action-text: var(--color-text-action);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -21,7 +21,7 @@ const UserActions = () => {
           aria-label={`${notificationCount} notificaciones`}
           onClick={handleClearNotifications}
         >
-          <Bell className="w-5 h-5 text-gray-700" />
+          <Bell className="w-5 h-5 text-accent-text" />
           {notificationCount > 0 && (
             <span className="absolute top-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full">
               {notificationCount}
@@ -38,7 +38,7 @@ const UserActions = () => {
         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
           <User className="w-5 h-5" />
         </div>
-        <span className="text-sm font-medium text-gray-700 hidden sm:inline-block">
+        <span className="text-sm font-medium text-accent-text hidden sm:inline-block">
           Mi Perfil
         </span>
       </Link>
