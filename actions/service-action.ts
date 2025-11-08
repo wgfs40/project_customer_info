@@ -2,7 +2,7 @@ import { Service } from "@/types/service";
 import { createClient } from "@/utils/supabase/server";
 
 export const GetServices = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data, error } = await supabase.from("services").select("*");
   const services: Service[] = data as Service[];
 
