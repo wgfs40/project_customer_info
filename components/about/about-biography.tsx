@@ -24,8 +24,8 @@ const AboutBiography = () => {
           </p>
           <p className="text-gray-600 leading-relaxed">
             Creo firmemente que la mejor estrategia es aquella que se basa en
-            datos y se entrega en la "dosis" justa: sin exageraciones, solo
-            resultados probados.
+            datos y se entrega en la &quot;dosis&quot; justa: sin exageraciones,
+            solo resultados probados.
           </p>
         </div>
       </div>
