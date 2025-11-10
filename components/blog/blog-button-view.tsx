@@ -1,10 +1,12 @@
 "use client";
 
+import { Button } from "../ui/button";
+
 const BlogButtonView = () => {
   return (
-    <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+    <Button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
       Ver más
-    </button>
+    </Button>
   );
 };
 

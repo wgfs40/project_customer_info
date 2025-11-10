@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { Input } from "../ui/input";
 
 const WAITH_BETWEEN_SEARCHES = 300;
 
@@ -22,7 +23,7 @@ const BlogSearchText = ({ placeholder }: { placeholder: string }) => {
 
   return (
     <div className="mb-6 container mx-auto px-4 bg-white p-6 rounded-lg border border-gray-200">
-      <input
+      <Input
         type="text"
         placeholder={placeholder}
         onChange={(e) => handleSearch(e.target.value)}

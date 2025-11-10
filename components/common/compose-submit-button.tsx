@@ -1,5 +1,6 @@
 "use client";
 import { useFormStatus } from "react-dom";
+import { Button } from "../ui/button";
 
 interface ComposeSubmitButtonProps {
   buttonText?: string;
@@ -14,7 +15,7 @@ const ComposeSubmitButton = ({
   const { pending } = useFormStatus();
   return (
     <div>
-      <button
+      <Button
         disabled={pending}
         type="submit"
         className={`bg-accent-text text-white py-2 px-4 rounded-md ${
@@ -24,7 +25,7 @@ const ComposeSubmitButton = ({
         {pending
           ? buttonTextPending || " (Enviando...)"
           : buttonText || "Registrar Contacto"}
-      </button>
+      </Button>
     </div>
   );
 };

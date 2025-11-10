@@ -1,5 +1,5 @@
 import { Service } from "@/types/service";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 
 export const GetServices = async () => {
   const supabase = await createClient();

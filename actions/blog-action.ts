@@ -1,12 +1,12 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 
 export async function GetBlogs(page: number, query: string, limit: number) {
   const supabase = await createClient();
   // obtener publicaciones del blog desde la base de datos
   const { data, error, count } = await supabase
-    .from("blogs")    
+    .from("blogs")
     .select("*", { count: "exact" })
     .ilike("title", `%${query}%`)
     .range((page - 1) * limit, page * limit - 1)

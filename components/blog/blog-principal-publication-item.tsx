@@ -18,7 +18,9 @@ const BlogPrincipalPublicationItem = (blog: Blog) => {
             Comentario (Cuerpo del Artículo):
           </p>
         </h3> */}
-        <p className="text-gray-700 leading-relaxed">{blog.article_body}</p>
+        <p className="text-gray-700 leading-relaxed">
+          {blog.article_body.substring(0, 200)}...
+        </p>
       </section>
       <div className="flex justify-end">
         <BlogButtonView />

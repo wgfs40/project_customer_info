@@ -1,8 +1,7 @@
 "use client";
-
-import Link from "next/link";
-import { User, Bell } from "lucide-react";
+import { Bell } from "lucide-react";
 import { useState } from "react";
+import DropDownUser from "./drop-down-user";
 
 const UserActions = () => {
   const [notificationCount, setNotificationCount] = useState(3);
@@ -30,17 +29,7 @@ const UserActions = () => {
       </div>
 
       {/* Perfil de usuario */}
-      <Link
-        href="/perfil"
-        className="flex items-center space-x-1 p-1 rounded-full hover:bg-gray-100 transition-colors"
-      >
-        <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
-          <User className="w-5 h-5" />
-        </div>
-        <span className="text-sm font-medium text-accent-text hidden sm:inline-block">
-          Mi Perfil
-        </span>
-      </Link>
+      <DropDownUser />
     </div>
   );
 };
