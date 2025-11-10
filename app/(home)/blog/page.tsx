@@ -1,3 +1,4 @@
+import BlogPagination from "@/components/blog/blog-pagination";
 import BlogPrincipalPublication from "@/components/blog/blog-principal-publication";
 import BlogSecundaryArticle from "@/components/blog/blog-secundary-article";
 import BlogTitle from "@/components/blog/blog-title";
@@ -9,6 +10,7 @@ const BlogPage = () => {
       <BlogTitle />
       <BlogSecundaryArticle />
       <BlogPrincipalPublication />
+      <BlogPagination />
     </section>
   );
 };

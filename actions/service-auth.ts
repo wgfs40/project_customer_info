@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export const signNewUser = async (email: string, password: string) => {
   const supabase = await createClient();
@@ -20,18 +21,19 @@ export const signNewUser = async (email: string, password: string) => {
   return data;
 };
 
-export const signInUser = async (email: string, password: string) => {
+export const signInUser = async (formData: FormData) => {
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
+  const { error } = await supabase.auth.signInWithPassword({
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
   });
 
   if (error) {
     console.log("Error during sign in:", error);
     throw new Error(error.message);
   }
-  return data;
+
+  redirect("/");
 };
 export const signOutUser = async () => {
   const supabase = await createClient();
