@@ -3,22 +3,12 @@
 import Link from "next/link";
 import { User, Bell } from "lucide-react";
 import { useState } from "react";
-import { signOutUser } from "@/actions/service-auth";
-import { useRouter } from "next/navigation";
 
 const UserActions = () => {
   const [notificationCount, setNotificationCount] = useState(3);
-  const router = useRouter();
   // Simulación de marcar todas las notificaciones como leídas
   const handleClearNotifications = () => {
     setNotificationCount(0);
-  };
-
-  const handleLogout = async () => {
-    // Lógica para cerrar sesión
-    await signOutUser();
-    // Redirigir o actualizar la página después de cerrar sesión
-    router.push("/auth/login");
   };
 
   return (
@@ -51,12 +41,6 @@ const UserActions = () => {
           Mi Perfil
         </span>
       </Link>
-      <button
-        onClick={handleLogout}
-        className="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
-      >
-        Cerrar sesión
-      </button>
     </div>
   );
 };

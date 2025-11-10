@@ -1,13 +1,35 @@
 "use server";
 
-export async function fetchBlogPosts(page: number, limit: number) {
-    // Simula la obtención de publicaciones de un blog desde una base de datos o API
-    const totalPosts = 50; // Ejemplo: total de publicaciones disponibles
-    const posts = Array.from({ length: limit }, (_, index) => ({
-        id: (page - 1) * limit + index + 1,
-        title: `Publicación de Blog ${(page - 1) * limit + index + 1}`,
-        summary: `Resumen de la publicación de blog ${(page - 1) * limit + index + 1}`,
-        createdAt: new Date().toISOString(),
-    }));
-    return { totalPosts, posts };
+import { createClient } from "@/utils/supabase/server";
+
+export async function GetBlogs(page: number, query: string, limit: number) {
+  const supabase = await createClient();
+  // obtener publicaciones del blog desde la base de datos
+  const { data, error, count } = await supabase
+    .from("blogs")    
+    .select("*", { count: "exact" })
+    .ilike("title", `%${query}%`)
+    .range((page - 1) * limit, page * limit - 1)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    return { totalBlogs: 0, blogs: [] };
+  }
+  const totalBlogs = count || 0;
+  const blogs = data || [];
+  return { totalBlogs, blogs };
+}
+
+export async function GetFeaturedBlogs() {
+  const supabase = await createClient();
+  // obtener publicaciones destacadas del blog desde la base de datos
+  const { data, error } = await supabase
+    .from("featured_blogs")
+    .select("*, blogs(*)")
+    .eq("active", true)
+    .order("order", { ascending: false });
+  if (error) {
+    return [];
+  }
+  return data || [];
 }
