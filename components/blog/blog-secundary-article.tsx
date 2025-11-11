@@ -22,7 +22,7 @@ const BlogSecundaryArticle = async () => {
             Publicado: {article.blogs.published_in?.toString()}
           </p>
           <div className="flex justify-end mt-4">
-            <BlogButtonView />
+            <BlogButtonView blogid={article.blogs.id.toString()} />
           </div>
         </div>
       ))}

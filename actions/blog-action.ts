@@ -33,3 +33,17 @@ export async function GetFeaturedBlogs() {
   }
   return data || [];
 }
+
+export async function GetBlogById(blogid: string) {
+  const supabase = await createClient();  
+  // obtener una publicación del blog por su ID desde la base de datos
+  const { data, error } = await supabase
+    .from("blogs")
+    .select("*")
+    .eq("id", blogid)
+    .single();
+  if (error) {
+    return null;
+  }
+  return data || null;
+}

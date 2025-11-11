@@ -23,7 +23,7 @@ const BlogPrincipalPublicationItem = (blog: Blog) => {
         </p>
       </section>
       <div className="flex justify-end">
-        <BlogButtonView />
+        <BlogButtonView blogid={blog.id.toString()} />
       </div>
     </>
   );
