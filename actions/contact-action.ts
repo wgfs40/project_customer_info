@@ -1,30 +1,46 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/client";
+import {
+  ContactFormSchema,
+  type FormState,
+} from "@/validations/contact-validation";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
-export async function contactRegister(formData: FormData) {
+export async function contactRegister(
+  prevState: FormState,
+  formData: FormData
+): Promise<FormState> {
   // Your registration logic here
-  const email = formData.get("email");
-  const name = formData.get("name");
-  const message = formData.get("message");
+  const fields = {
+    email: formData.get("email") as string,
+    name: formData.get("name") as string,
+    message: formData.get("message") as string,
+  };
 
-  // Validate and process the form data
-  if (!email || !name || !message) {
-    throw new Error("All fields are required");
+  const validationFields = ContactFormSchema.safeParse(fields);
+
+  if (!validationFields.success) {
+    const flattenedErrors = z.flattenError(validationFields.error);
+    return {
+      success: false,
+      message: "Validation failed",
+      errors: flattenedErrors.fieldErrors,
+      data: fields,
+    };
   }
 
   const supabase = createClient();
 
   const { error } = await supabase.from("contacts").insert([
     {
-      email,
-      name,
-      message,
+      name: fields.name,
+      email: fields.email,
+      message: fields.message,
     },
   ]);
   if (error) {
-    console.error("Error inserting contact:", error);
     throw new Error("Failed to register contact");
   }
 
