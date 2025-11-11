@@ -1,10 +1,19 @@
 import { ShoppingCart } from "lucide-react";
+import { Session } from "@supabase/supabase-js";
 
-const ShoppingCartAction = () => {
+const ShoppingCartAction = ({
+  userSession,
+}: {
+  userSession: Session | null;
+}) => {
   return (
-    <div className="flex items-center p-2 bg-action-text text-white font-bold rounded-full shadow-md hover:bg-orange-700 transition duration-200 transform hover:scale-105 flex-shrink-0">
-      <ShoppingCart className="w-6 h-6" />
-    </div>
+    <>
+      {userSession && (
+        <div className="flex items-center p-2 bg-action-text text-white font-bold rounded-full shadow-md hover:bg-orange-700 transition duration-200 transform hover:scale-105 flex-shrink-0">
+          <ShoppingCart className="w-6 h-6" />
+        </div>
+      )}
+    </>
   );
 };
 

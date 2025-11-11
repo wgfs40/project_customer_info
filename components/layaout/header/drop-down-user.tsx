@@ -1,19 +1,27 @@
 "use client";
 
+import { signOutUser } from "@/actions/service-auth";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
+  DropdownMenu,  
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
+  DropdownMenuSeparator,  
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User } from "lucide-react";
+import { LogOut, User } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Session } from "@supabase/supabase-js";
 
-const DropDownUser = () => {
+const DropDownUser = ({ userSession }: { userSession: Session | null }) => {
+  const { replace } = useRouter();
+  const handleCloseSession = async () => {
+    // Logic to close user session
+    signOutUser().then(() => {
+      replace("/");
+    });
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -24,15 +32,11 @@ const DropDownUser = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Peril de usuario</DropdownMenuLabel>
+        <DropdownMenuLabel>{userSession?.user.email}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem>Status Bar</DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem disabled>
-          Activity Bar
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuItem onClick={() => alert("cerrar session")}>
+        <DropdownMenuItem onClick={handleCloseSession}>
           Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          <LogOut className="ml-auto h-4 w-4" />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

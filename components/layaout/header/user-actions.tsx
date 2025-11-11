@@ -2,9 +2,12 @@
 import { Bell } from "lucide-react";
 import { useState } from "react";
 import DropDownUser from "./drop-down-user";
+import { Session } from "@supabase/supabase-js";
+import Link from "next/link";
 
-const UserActions = () => {
+const UserActions = ({ userSession }: { userSession: Session | null }) => {
   const [notificationCount, setNotificationCount] = useState(3);
+
   // Simulación de marcar todas las notificaciones como leídas
   const handleClearNotifications = () => {
     setNotificationCount(0);
@@ -27,9 +30,18 @@ const UserActions = () => {
           )}
         </button>
       </div>
-
-      {/* Perfil de usuario */}
-      <DropDownUser />
+      {userSession ? (
+        <>
+          {/* Perfil de usuario */}
+          <DropDownUser userSession={userSession} />
+        </>
+      ) : (
+        <>
+          <Link href="/auth/login" className="text-accent-text hover:underline">
+            Iniciar sesión
+          </Link>
+        </>
+      )}
     </div>
   );
 };

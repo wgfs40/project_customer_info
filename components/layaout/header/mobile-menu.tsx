@@ -8,8 +8,9 @@ import { links } from "@/types/menu-link";
 import ShoppingCartAction from "./shopping-cart-actions";
 import UserActions from "./user-actions";
 import Logo from "./logo";
+import { Session } from "@supabase/supabase-js";
 
-const MobileMenu = () => {
+const MobileMenu = ({ userSession }: { userSession: Session | null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -65,8 +66,8 @@ const MobileMenu = () => {
               </nav>
               {/* Botones de accion para el carrito de compra y perfil de usuario */}
               <div className="flex items-center pl-5 space-x-5">
-                <ShoppingCartAction />
-                <UserActions />
+                <ShoppingCartAction userSession={userSession} />
+                <UserActions userSession={userSession} />
               </div>
             </div>
           </div>
