@@ -4,7 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-
   /* --- 1. CONSTANTES DE DISEÑO Y VISTAS --- */
 
   /* Colores personalizados */
@@ -142,4 +141,18 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.admin-layout-container {
+  @apply flex flex-col h-screen w-screen;
+}
+
+.admin-children-container {
+  @apply bg-white p-6 overflow-y-auto flex-grow sm:col-span-3 lg:col-span-4;
+}
+.admin-header {
+  @apply text-white p-4 h-16 flex items-center shadow-lg bg-primary;
+}
+.admin-sidebar {
+  @apply bg-white p-4 h-full absolute inset-y-0 left-0 w-64 z-40 lg:translate-x-0 md:translate-x-0 transition-transform duration-300 ease-in-out  sm:relative sm:w-auto sm:z-auto sm:col-span-1 sm:block sm:transform-none;
 }
