@@ -53,6 +53,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/admin/:path*", // Protege /admin, /admin/settings, /admin/users, etc.
     /*
      * Match all request paths except:
      * - _next/static (static files)

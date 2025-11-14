@@ -15,6 +15,10 @@ export const IconMap = {
   Globe: Globe,
   ShieldCheck: ShieldCheck,
   Megaphone: Megaphone,
+  Dashboard: ChartBar,
+  Users: Globe,
+  Settings: ShieldCheck,
+  Blog: Megaphone,
   // ... añade más íconos si los necesitas
 } as const;
 

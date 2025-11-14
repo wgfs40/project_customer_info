@@ -1,3 +1,5 @@
+import AdminSidebarItem from "./admin-sidebar-item";
+
 const AdminSidebar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
   return (
     <div
@@ -7,23 +9,7 @@ const AdminSidebar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
     >
       <h2 className="text-lg font-semibold mb-4">sidebar</h2>
       {/* Ejemplo de contenido de sidebar */}
-      <ul className="space-y-2 text-sm">
-        <li>
-          <a href="#" className="hover:text-blue-200">
-            Enlace 1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-blue-200">
-            Enlace 2
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-blue-200">
-            Enlace 3
-          </a>
-        </li>
-      </ul>
+      <AdminSidebarItem />
     </div>
   );
 };

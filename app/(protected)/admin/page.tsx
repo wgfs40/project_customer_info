@@ -1,4 +1,4 @@
-const page = () => {
+const DashBoardPage = () => {
   return (
     <div>
       <h2 className="text-2xl font-bold text-gray-800 mb-4">content</h2>
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default DashBoardPage;

@@ -1,64 +1,8 @@
-import {
-  BarChart3,
-  Globe,
-  Mail,
-  Megaphone,
-  Palette,
-  ShieldCheck,
-} from "lucide-react";
 import Search from "../common/search";
 import ServiceCard from "./service-card";
-import { Service } from "@/types/service";
 import { GetServices } from "@/actions/service-action";
-import { IconValidNames } from "@/types/icon-map";
 
 const ServiceView = async () => {
-  // prueba de datos de servicios
-  const services: Service[] = [
-    {
-      id: "1",
-      icon: BarChart3,
-      name: "Análisis de Datos",
-      description: "Transformamos datos brutos en estrategias accionables.",
-      color: "text-principal-text",
-    },
-    {
-      id: "2",
-      icon: Palette,
-      name: "Diseño Creativo",
-      description: "Identidad de marca y contenido visual impactante.",
-      color: "text-accent-text",
-    },
-    {
-      id: "3",
-      icon: Mail,
-      name: "Email Marketing",
-      description: "Campañas de correo electrónico que generan lealtad.",
-      color: "text-action-text",
-    },
-    {
-      id: "4",
-      icon: Globe,
-      name: "Desarrollo Web",
-      description: "Páginas rápidas, seguras y optimizadas para conversión.",
-      color: "text-accent-text",
-    },
-    {
-      id: "5",
-      icon: ShieldCheck,
-      name: "Reputación Online",
-      description: "Manejo de crisis y construcción de credibilidad digital.",
-      color: "text-action-text",
-    },
-    {
-      id: "6",
-      icon: Megaphone,
-      name: "Relaciones Públicas",
-      description: "Visibilidad en medios y alianzas estratégicas.",
-      color: "text-accent-text",
-    },
-  ];
-
   const serviceData = await GetServices();
   return (
     <section className="space-y-10">
