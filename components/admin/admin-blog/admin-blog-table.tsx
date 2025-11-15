@@ -1,107 +1,97 @@
-// --- DATOS DE EJEMPLO ---
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Pagado",
-    method: "Tarjeta de crédito",
-    amount: "$250.00",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pendiente",
-    method: "Transferencia bancaria",
-    amount: "$150.00",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "No Pagado",
-    method: "PayPal",
-    amount: "$350.00",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Pagado",
-    method: "Tarjeta de crédito",
-    amount: "$450.00",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Pendiente",
-    method: "Efectivo",
-    amount: "$550.00",
-  },
-];
+import { GetBlogs } from "@/actions/blog-action";
+import formatDate from "@/components/common/format-date";
+import IconWithTooltip from "@/components/common/icon-with-tooltip";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Blog } from "@/types/blog";
+import { Edit, Trash } from "lucide-react";
 
-const getStatusClasses = (status: string) => {
-  switch (status) {
-    case "Pagado":
-      return "bg-emerald-100 text-emerald-600";
-    case "Pendiente":
-      return "bg-amber-100 text-amber-600";
-    case "No Pagado":
-      return "bg-red-100 text-red-600";
-    default:
-      return "bg-gray-100 text-gray-600";
+const AdminBlogTable = async ({
+  page,
+  query,
+}: {
+  page: number;
+  query: string;
+}) => {
+  const blogs = await GetBlogs(page, query, 10);
+
+  if (blogs.blogs.length === 0) {
+    return <div>No hay publicaciones de blog disponibles.</div>;
   }
-};
 
-const AdminBlogTable = () => {
-  const headers = ["Factura", "Estado", "Método", "Monto"];
+  const totalBlogs = blogs.totalBlogs;
+  const objBlogs = blogs.blogs as Blog[];
+  console.log("Total Blogs:", totalBlogs);
+
+  const headers = ["Titulo", "Contenido", "Tema", "Publicado En", "Acciones"];
+  //const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
   return (
-    <div className="w-full">
+    <div className="overflow-x-auto bg-white shadow-xl rounded-xl">
       {/* 1. VISTA DE ESCRITORIO/TABLET (Standard Table) */}
       {/* Oculto en móviles, visible desde el punto de quiebre 'sm' */}
       <div className="hidden sm:block rounded-lg border bg-white shadow-md overflow-hidden">
-        <table className="w-full caption-bottom text-sm">
-          <thead className="[&_tr]:border-b">
-            <tr className="border-b transition-colors hover:bg-gray-50 data-[state=selected]:bg-gray-100">
-              <th className="h-12 px-4 text-left align-middle font-medium text-gray-500 w-[100px]">
+        <Table className="min-w-full divide-y divide-gray-200">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
                 {headers[0]}
-              </th>
-              <th className="h-12 px-4 text-left align-middle font-medium text-gray-500">
+              </TableHead>
+              <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/2">
                 {headers[1]}
-              </th>
-              <th className="h-12 px-4 text-left align-middle font-medium text-gray-500">
+              </TableHead>
+              <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/12">
                 {headers[2]}
-              </th>
-              <th className="h-12 px-4 text-right align-middle font-medium text-gray-500 w-[100px]">
+              </TableHead>
+              <TableHead className="hidden md:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/12">
                 {headers[3]}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="[&_tr:last-child]:border-0">
-            {invoices.map((item, index) => (
-              <tr
-                key={index}
-                className="border-b transition-colors hover:bg-gray-50"
-              >
-                <td className="p-4 align-middle font-medium text-gray-900">
-                  {item.invoice}
-                </td>
-                <td className="p-4 align-middle">
-                  <span
-                    className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusClasses(
-                      item.paymentStatus
-                    )}`}
-                  >
-                    {item.paymentStatus}
-                  </span>
-                </td>
-                <td className="p-4 align-middle text-gray-700">
-                  {item.method}
-                </td>
-                <td className="p-4 align-middle text-right font-semibold text-gray-800">
-                  {item.amount}
-                </td>
-              </tr>
+              </TableHead>
+              <TableHead className="text-right px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider w-1/12">
+                {headers[4]}
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody className="bg-white divide-y divide-gray-200">
+            {objBlogs.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell className="px-6 py-4 max-w-sm text-sm font-medium text-indigo-600">
+                  {item.title}
+                </TableCell>
+                <TableCell className="px-6 py-4 max-w-md truncate text-sm text-gray-700">
+                  {item.article_body.length > 60
+                    ? item.article_body.substring(0, 60) + "..."
+                    : item.article_body}
+                </TableCell>
+                <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {item.main_topic}
+                </TableCell>
+                <TableCell className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {formatDate(item.published_in)}
+                </TableCell>
+                <TableCell className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                  <div className="flex items-center justify-center space-x-3">
+                    <IconWithTooltip tooltipText="Editar">
+                      <Edit size={16} className="text-blue-600" />
+                    </IconWithTooltip>
+                    <IconWithTooltip tooltipText="Eliminar">
+                      <Trash size={16} className="text-red-500" />
+                    </IconWithTooltip>
+                  </div>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
       {/* 2. VISTA MÓVIL (Card Layout) */}
       {/* Visible solo en móviles, oculto desde el punto de quiebre 'sm' */}
       <div className="sm:hidden space-y-4" role="list">
-        {invoices.map((item, index) => (
+        {objBlogs.map((item, index) => (
           <div
             key={index}
             className="bg-white p-4 border rounded-lg shadow-sm"
@@ -110,14 +100,7 @@ const AdminBlogTable = () => {
             {/* Header / Título Principal */}
             <div className="flex justify-between items-center mb-2 pb-2 border-b border-gray-100">
               <span className="text-sm font-semibold text-gray-800">
-                {headers[0]}: {item.invoice}
-              </span>
-              <span
-                className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusClasses(
-                  item.paymentStatus
-                )}`}
-              >
-                {item.paymentStatus}
+                {headers[0]}: {item.title}
               </span>
             </div>
 
@@ -128,7 +111,7 @@ const AdminBlogTable = () => {
                 {headers[2]}:
               </div>
               <div className="col-span-1 text-right text-gray-800">
-                {item.method}
+                {item.main_topic}
               </div>
 
               {/* Monto */}
@@ -136,7 +119,7 @@ const AdminBlogTable = () => {
                 {headers[3]}:
               </div>
               <div className="col-span-1 text-right font-bold text-lg text-indigo-600">
-                {item.amount}
+                {formatDate(item.published_in)}
               </div>
             </div>
           </div>

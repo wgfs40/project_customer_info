@@ -14,3 +14,5 @@ export interface FeaturedBlog {
   active: boolean;
   blogs: Blog;
 }
+
+export type CreateBlog = Omit<Blog, "id" | "created_at">;

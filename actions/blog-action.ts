@@ -1,5 +1,7 @@
 "use server";
 
+import type { Blog, CreateBlog } from "@/types/blog";
+
 import { createClient } from "@/lib/supabase/server";
 
 export async function GetBlogs(page: number, query: string, limit: number) {
@@ -41,6 +43,45 @@ export async function GetBlogById(blogid: string) {
     .from("blogs")
     .select("*")
     .eq("id", blogid)
+    .single();
+  if (error) {
+    return null;
+  }
+  return data || null;
+}
+
+export async function updateBlog(blog: Blog) {
+  const supabase = await createClient();
+  // actualizar una publicación del blog en la base de datos
+  const { data, error } = await supabase
+    .from("blogs")
+    .update({
+      title: blog.title,
+      article_body: blog.article_body,
+      main_topic: blog.main_topic,
+      published_in: blog.published_in,
+    })
+    .eq("id", blog.id)
+    .select()
+    .single();
+  if (error) {
+    return null;
+  }
+  return data || null;
+}
+
+export async function createBlog(blog: CreateBlog) {
+  const supabase = await createClient();
+  // crear una nueva publicación del blog en la base de datos
+  const { data, error } = await supabase
+    .from("blogs")
+    .insert({
+      title: blog.title,
+      article_body: blog.article_body,
+      main_topic: blog.main_topic,
+      published_in: blog.published_in,
+    })
+    .select()
     .single();
   if (error) {
     return null;
