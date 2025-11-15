@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Blog } from "@/types/blog";
 import { Edit, Trash } from "lucide-react";
+import Pagination from "../../common/pagination";
 
 const AdminBlogTable = async ({
   page,
@@ -27,7 +28,6 @@ const AdminBlogTable = async ({
 
   const totalBlogs = blogs.totalBlogs;
   const objBlogs = blogs.blogs as Blog[];
-  console.log("Total Blogs:", totalBlogs);
 
   const headers = ["Titulo", "Contenido", "Tema", "Publicado En", "Acciones"];
   //const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
@@ -87,6 +87,9 @@ const AdminBlogTable = async ({
             ))}
           </TableBody>
         </Table>
+        <div className="p-4 flex justify-end">
+          <Pagination totalPages={totalBlogs} />
+        </div>
       </div>
       {/* 2. VISTA MÓVIL (Card Layout) */}
       {/* Visible solo en móviles, oculto desde el punto de quiebre 'sm' */}
