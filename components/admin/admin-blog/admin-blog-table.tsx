@@ -12,6 +12,7 @@ import {
 import { Blog } from "@/types/blog";
 import { Edit, Trash } from "lucide-react";
 import Pagination from "../../common/pagination";
+import Link from "next/link";
 
 const AdminBlogTable = async ({
   page,
@@ -75,9 +76,11 @@ const AdminBlogTable = async ({
                 </TableCell>
                 <TableCell className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div className="flex items-center justify-center space-x-3">
-                    <IconWithTooltip tooltipText="Editar">
-                      <Edit size={16} className="text-blue-600" />
-                    </IconWithTooltip>
+                    <Link href={`/admin/blog/${item.id}`}>
+                      <IconWithTooltip tooltipText="Editar">
+                        <Edit size={16} className="text-blue-600" />
+                      </IconWithTooltip>
+                    </Link>
                     <IconWithTooltip tooltipText="Eliminar">
                       <Trash size={16} className="text-red-500" />
                     </IconWithTooltip>

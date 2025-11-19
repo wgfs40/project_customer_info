@@ -1,10 +1,8 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/client";
-import {
-  ContactFormSchema,
-  type FormState,
-} from "@/validations/contact-validation";
+import { ContactFormSchema } from "@/validations/contact-validation";
+import { type FormState } from "@/validations/form-state";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 

@@ -11,19 +11,4 @@ export const ContactFormSchema = z.object({
     .max(1000, "El mensaje no puede exceder 1000 caracteres"),
 });
 
-export type FormState = {
-  success: boolean;
-  message?: string;
-  data?: {
-    identifier?: string;
-    name?: string;
-    email?: string;
-    message?: string;
-  };
-  errors?: {
-    identifier?: string[];
-    name?: string[];
-    email?: string[];
-    message?: string[];
-  } | null;
-};
+

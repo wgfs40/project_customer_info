@@ -16,3 +16,4 @@ export interface FeaturedBlog {
 }
 
 export type CreateBlog = Omit<Blog, "id" | "created_at">;
+export type UpdateBlog = Partial<Omit<Blog, "id" | "created_at">> & { id: number };

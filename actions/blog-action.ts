@@ -1,8 +1,10 @@
 "use server";
 
-import type { Blog, CreateBlog } from "@/types/blog";
+import type { Blog, CreateBlog, UpdateBlog } from "@/types/blog";
 
 import { createClient } from "@/lib/supabase/server";
+import { BlogFormSchema } from "@/validations/blog-validation";
+import { z } from "zod";
 
 export async function GetBlogs(page: number, query: string, limit: number) {
   const supabase = await createClient();
@@ -37,7 +39,7 @@ export async function GetFeaturedBlogs() {
 }
 
 export async function GetBlogById(blogid: string) {
-  const supabase = await createClient();  
+  const supabase = await createClient();
   // obtener una publicación del blog por su ID desde la base de datos
   const { data, error } = await supabase
     .from("blogs")
@@ -50,8 +52,25 @@ export async function GetBlogById(blogid: string) {
   return data || null;
 }
 
-export async function updateBlog(blog: Blog) {
+export async function updateBlog(formData: FormData) {
   const supabase = await createClient();
+  const blog: UpdateBlog = {
+    id: parseInt(formData.get("id") as string),
+    title: formData.get("title") as string,
+    article_body: formData.get("article_body") as string,
+    main_topic: formData.get("main_topic") as string,
+    published_in: new Date(formData.get("published_in") as string),
+  };
+  const validationFields = BlogFormSchema.safeParse(blog);
+  if (!validationFields.success) {
+    const flattenedErrors = z.flattenError(validationFields.error);
+    return {
+      success: false,
+      message: "Validation failed",
+      errors: flattenedErrors.fieldErrors,
+      data: blog,
+    };
+  }
   // actualizar una publicación del blog en la base de datos
   const { data, error } = await supabase
     .from("blogs")
@@ -70,8 +89,27 @@ export async function updateBlog(blog: Blog) {
   return data || null;
 }
 
-export async function createBlog(blog: CreateBlog) {
+export async function createBlog(formData: FormData) {
   const supabase = await createClient();
+
+  const blog: CreateBlog = {
+    title: formData.get("title") as string,
+    article_body: formData.get("article_body") as string,
+    main_topic: formData.get("main_topic") as string,
+    published_in: new Date(formData.get("published_in") as string),
+  };
+
+  const validationFields = BlogFormSchema.safeParse(blog);
+  if (!validationFields.success) {
+    const flattenedErrors = z.flattenError(validationFields.error);
+    return {
+      success: false,
+      message: "Validation failed",
+      errors: flattenedErrors.fieldErrors,
+      data: blog,
+    };
+  }
+
   // crear una nueva publicación del blog en la base de datos
   const { data, error } = await supabase
     .from("blogs")
