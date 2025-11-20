@@ -1,5 +1,4 @@
 import ServiceView from "@/components/services/service-view";
-import React from "react";
 
 const ServicePage = () => {
   return (

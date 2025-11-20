@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import { Input } from "../ui/input";
 
 interface SearchProps {
