@@ -2,8 +2,8 @@
 import { contactRegister } from "@/actions/contact-action";
 import { useActionState, useRef } from "react";
 import ComposeSubmitButton from "../common/compose-submit-button";
-import { type FormState } from "@/validations/contact-validation";
 import FormError from "../common/form-error";
+import { type FormState } from "@/validations/form-state";
 
 const INITIAL_FORM_STATE: FormState = {
   success: false,
@@ -43,10 +43,7 @@ const ContactForm = () => {
           <FormError error={formState.errors?.name} />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="correo"
-            className="label-contact-form"
-          >
+          <label htmlFor="correo" className="label-contact-form">
             Correo
           </label>
           <input
@@ -59,10 +56,7 @@ const ContactForm = () => {
           <FormError error={formState.errors?.email} />
         </div>
         <div className="mb-8">
-          <label
-            htmlFor="mensaje"
-            className="label-contact-form"
-          >
+          <label htmlFor="mensaje" className="label-contact-form">
             Mensaje
           </label>
           <textarea

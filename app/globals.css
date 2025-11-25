@@ -171,7 +171,7 @@ body {
 }
 
 .input-contact-form {
-  @apply w-full px-4 py-2 mb-4 rounded-md border border-[var(--color-contact-form-acento)] focus:border-[var(--color-contact-form-acento)] focus:ring-2 focus:ring-[var(--color-contact-form-acento)] focus:outline-none text-black;
+  @apply w-full px-4 py-2 mb-4 rounded-md border border-[var(--color-contact-form-acento)] focus:border-[var(--color-contact-form-acento)] focus:ring-2 focus:ring-[var(--color-contact-form-acento)] focus:outline-none text-white;
 }
 
 .label-contact-form {
