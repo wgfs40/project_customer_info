@@ -11,6 +11,11 @@
   --color-orange: #ff8c00;
   --color-blue: #0047ab;
 
+  /* colores para el formulario de contacto */
+  --color-contact-form-background: #1e0851; /* Dark Background */
+  --color-contact-form-acento: #ff8c36; /* Vibrant Orange */
+  --font-familia: "Inter", sans-serif;
+
   /* Texto principal */
   --color-text-principal: var(--color-blue);
   --color-text-accent: var(--color-teal);
@@ -155,4 +160,24 @@ body {
 }
 .admin-sidebar {
   @apply bg-white p-4 h-full absolute inset-y-0 left-0 w-64 z-40 lg:translate-x-0 md:translate-x-0 transition-transform duration-300 ease-in-out  sm:relative sm:w-auto sm:z-auto sm:col-span-1 sm:block sm:transform-none;
+}
+
+.background-contact-form {
+  @apply max-w-xl mx-auto  p-8 md:p-10 rounded-xl shadow-2xl  bg-[var(--color-contact-form-background)];
+}
+
+.contact-form-title {
+  @apply text-3xl font-extrabold mb-6 text-center text-[var(--color-contact-form-acento)];
+}
+
+.input-contact-form {
+  @apply w-full px-4 py-2 mb-4 rounded-md border border-[var(--color-contact-form-acento)] focus:border-[var(--color-contact-form-acento)] focus:ring-2 focus:ring-[var(--color-contact-form-acento)] focus:outline-none text-black;
+}
+
+.label-contact-form {
+  @apply block mb-2 font-medium text-[var(--color-contact-form-acento)];
+}
+
+.button-contact-form {
+  @apply w-full h-12 bg-[var(--color-contact-form-acento)] text-white font-bold py-3 px-6 rounded-md hover:bg-[var(--color-contact-form-acento)]/90 transition duration-300;
 }

@@ -18,9 +18,7 @@ const ComposeSubmitButton = ({
       <Button
         disabled={pending}
         type="submit"
-        className={`bg-accent-text text-white py-2 px-4 rounded-md ${
-          className || ""
-        }`}
+        className={`button-contact-form ${className || ""}`}
       >
         {pending
           ? buttonTextPending || " (Enviando...)"
