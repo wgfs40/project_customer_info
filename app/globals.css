@@ -14,7 +14,7 @@
   /* colores para el formulario de contacto */
   --color-contact-form-background: #1e0851; /* Dark Background */
   --color-contact-form-acento: #ff8c36; /* Vibrant Orange */
-  --font-familia: "Inter", sans-serif;
+  --font-familia-contact-form: "Inter", sans-serif;
 
   /* Texto principal */
   --color-text-principal: var(--color-blue);
@@ -175,9 +175,9 @@ body {
 }
 
 .label-contact-form {
-  @apply block mb-2 font-medium text-[var(--color-contact-form-acento)];
+  @apply block mb-2  font-[var(--font-familia-contact-form)] text-[var(--color-contact-form-acento)];
 }
 
 .button-contact-form {
-  @apply w-full h-12 bg-[var(--color-contact-form-acento)] text-white font-bold py-3 px-6 rounded-md hover:bg-[var(--color-contact-form-acento)]/90 transition duration-300;
+  @apply w-full h-12 bg-[var(--color-contact-form-acento)] text-[var(--font-familia-contact-form)] font-bold py-3 px-6 rounded-md hover:bg-[var(--color-contact-form-acento)]/90 transition duration-300;
 }
