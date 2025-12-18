@@ -4,6 +4,7 @@ import { useActionState, useRef } from "react";
 import ComposeSubmitButton from "../common/compose-submit-button";
 import FormError from "../common/form-error";
 import { type FormState } from "@/validations/form-state";
+import { toast } from "sonner";
 
 const INITIAL_FORM_STATE: FormState = {
   success: false,
@@ -18,16 +19,17 @@ const ContactForm = () => {
     contactRegister,
     INITIAL_FORM_STATE
   );
+
+  const handleAction = async (formData: FormData) => {
+    formAction(formData);
+    formRef.current?.reset();
+    formState.success && toast.success("¡Mensaje enviado con éxito!");
+  };
+
   return (
     <div className="background-contact-form">
       <h2 className="contact-form-title">Contactanos</h2>
-      <form
-        action={async (formData: FormData) => {
-          formAction(formData);
-          formRef.current?.reset();
-        }}
-        className="space-y-6"
-      >
+      <form action={handleAction} className="space-y-6">
         <div className="mb-5">
           <label htmlFor="nombre" className="label-contact-form">
             Nombre

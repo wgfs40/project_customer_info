@@ -3,7 +3,7 @@ export interface Blog {
   title: string;
   article_body: string;
   main_topic?: string;
-  published_in?: Date;
+  published_in?: Date | string | null;
   created_at: Date;
 }
 
@@ -16,4 +16,6 @@ export interface FeaturedBlog {
 }
 
 export type CreateBlog = Omit<Blog, "id" | "created_at">;
-export type UpdateBlog = Partial<Omit<Blog, "id" | "created_at">> & { id: number };
+export type UpdateBlog = Partial<Omit<Blog, "id" | "created_at">> & {
+  id: number;
+};

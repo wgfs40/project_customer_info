@@ -14,7 +14,7 @@ const isProtectedRoute = (pathname: string) => {
   return protectedRoutes.some((route) => normalizedPathname.startsWith(route));
 };
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   await updateSession(request);
 
