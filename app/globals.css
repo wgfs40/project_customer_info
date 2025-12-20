@@ -11,6 +11,11 @@
   --color-orange: #ff8c00;
   --color-blue: #0047ab;
 
+  --marisol-magenta: #e6007e;
+  --marisol-yellow: #ffd200;
+  --marisol-dark: #1a1a1a;
+  --marisol-light: #f9f9f9;
+
   /* colores para el formulario de contacto */
   --color-contact-form-background: #1e0851; /* Dark Background */
   --color-contact-form-acento: #ff8c36; /* Vibrant Orange */
@@ -103,6 +108,8 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
 }
 
 .dark {
@@ -167,7 +174,7 @@ body {
 }
 
 .contact-form-title {
-  @apply text-3xl font-extrabold mb-6 text-center text-[var(--color-contact-form-acento)];
+  @apply text-3xl font-extrabold mb-6 text-center text-[var(--marisol-magenta)];
 }
 
 .input-contact-form {
@@ -180,4 +187,39 @@ body {
 
 .button-contact-form {
   @apply w-full h-12 bg-[var(--color-contact-form-acento)] text-[var(--font-familia-contact-form)] font-bold py-3 px-6 rounded-md hover:bg-[var(--color-contact-form-acento)]/90 transition duration-300;
+}
+
+.bg-magenta {
+  background-color: var(--marisol-magenta);
+}
+.text-magenta {
+  color: var(--marisol-magenta);
+}
+.bg-yellow {
+  background-color: var(--marisol-yellow);
+}
+.text-yellow {
+  color: var(--marisol-yellow);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--marisol-magenta) 0%, #b30062 100%);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(230, 0, 126, 0.1);
+}
+
+.color-bubble {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 2px solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

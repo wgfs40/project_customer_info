@@ -2,42 +2,104 @@ import { MonitorDot, TrendingUp, Users } from "lucide-react";
 
 const HomeFeaturedServices = () => {
   return (
-    <div>
-      <h3
-        className={`text-2xl font-bold text-gray-800 mb-6 border-b-2 border-teal-500 inline-block pb-1`}
-      >
-        Servicios Destacados
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div
-          className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-teal-500`}
-        >
-          <TrendingUp className={`w-8 h-8 text-accent-text mb-3`} />
-          <h4 className="font-semibold text-lg mb-2">Estrategia SEO</h4>
-          <p className="text-gray-600 text-sm">
-            Aseguramos que tu marca lidere las búsquedas orgánicas.
-          </p>
+    <section id="servicios" className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900">
+              Servicios Destacados
+            </h2>
+            <div className="h-1 w-20 bg-yellow mt-2"></div>
+          </div>
         </div>
-        <div
-          className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-orange-500`}
-        >
-          <MonitorDot className={`w-8 h-8 text-action-text mb-3`} />
-          <h4 className="font-semibold text-lg mb-2">Publicidad Digital</h4>
-          <p className="text-gray-600 text-sm">
-            Campañas PPC optimizadas para el máximo retorno de inversión.
-          </p>
-        </div>
-        <div
-          className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-teal-500`}
-        >
-          <Users className={`w-8 h-8 text-accent-text mb-3`} />
-          <h4 className="font-semibold text-lg mb-2">Gestión de Redes</h4>
-          <p className="text-gray-600 text-sm">
-            Creamos comunidades y contenido de alto valor en plataformas clave.
-          </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Post 1 */}
+          <article className="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100">
+            <div className="h-48 blog-image-placeholder flex items-center justify-center text-gray-400">
+              [Imagen de Estrategia de Contenidos]
+            </div>
+            <div className="p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-magenta/10 text-magenta text-xs font-bold px-3 py-1 rounded-full uppercase">
+                  Estrategia
+                </span>
+                <span className="text-gray-400 text-xs">5 min lectura</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 hover:text-magenta cursor-pointer transition">
+                5 Tendencias de Marketing para 2024
+              </h3>
+              <p className="text-gray-600 mb-4 line-clamp-3">
+                Descubre cómo la IA y el video corto están transformando la
+                manera en que las marcas conectan con sus clientes.
+              </p>
+              <a
+                href="#"
+                className="text-gray-900 font-bold border-b-2 border-yellow hover:border-magenta transition pb-1"
+              >
+                Leer más
+              </a>
+            </div>
+          </article>
+
+          {/* Post 2 */}
+          <article className="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100">
+            <div className="h-48 blog-image-placeholder flex items-center justify-center text-gray-400">
+              [Imagen de Branding y Color]
+            </div>
+            <div className="p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-yellow/20 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                  Diseño
+                </span>
+                <span className="text-gray-400 text-xs">8 min lectura</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 hover:text-magenta cursor-pointer transition">
+                Psicología del Color en tu Marca
+              </h3>
+              <p className="text-gray-600 mb-4 line-clamp-3">
+                ¿Por qué elegimos el Magenta y el Amarillo? El impacto emocional
+                de tu paleta de colores en las ventas.
+              </p>
+              <a
+                href="#"
+                className="text-gray-900 font-bold border-b-2 border-yellow hover:border-magenta transition pb-1"
+              >
+                Leer más
+              </a>
+            </div>
+          </article>
+
+          {/* Post 3 */}
+          <article className="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100">
+            <div className="h-48 blog-image-placeholder flex items-center justify-center text-gray-400">
+              [Imagen de Redes Sociales]
+            </div>
+            <div className="p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-magenta/10 text-magenta text-xs font-bold px-3 py-1 rounded-full uppercase">
+                  Social Media
+                </span>
+                <span className="text-gray-400 text-xs">4 min lectura</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 hover:text-magenta cursor-pointer transition">
+                Guía de Instagram Reels para Negocios
+              </h3>
+              <p className="text-gray-600 mb-4 line-clamp-3">
+                Cómo crear contenido viral sin necesidad de grandes presupuestos
+                de producción audiovisual.
+              </p>
+              <a
+                href="#"
+                className="text-gray-900 font-bold border-b-2 border-yellow hover:border-magenta transition pb-1"
+              >
+                Leer más
+              </a>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

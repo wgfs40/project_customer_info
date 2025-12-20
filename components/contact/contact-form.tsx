@@ -27,11 +27,15 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="background-contact-form">
+    <div className="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-bl-full -mr-10 -mt-10"></div>
       <h2 className="contact-form-title">Contactanos</h2>
-      <form action={handleAction} className="space-y-6">
-        <div className="mb-5">
-          <label htmlFor="nombre" className="label-contact-form">
+      <form action={handleAction} className="space-y-6 relative z-10">
+        <div className="space-y-2">
+          <label
+            htmlFor="nombre"
+            className="text-sm font-bold text-gray-700 ml-1"
+          >
             Nombre
           </label>
           <input
@@ -40,12 +44,15 @@ const ContactForm = () => {
             name="name"
             required
             defaultValue={formState.data?.name}
-            className="input-contact-form"
+            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-pink-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
           />
           <FormError error={formState.errors?.name} />
         </div>
         <div className="mb-5">
-          <label htmlFor="correo" className="label-contact-form">
+          <label
+            htmlFor="correo"
+            className="text-sm font-bold text-gray-700 ml-1"
+          >
             Correo
           </label>
           <input
@@ -53,12 +60,15 @@ const ContactForm = () => {
             name="email"
             id="correo"
             defaultValue={formState.data?.email}
-            className="input-contact-form"
+            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-pink-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
           />
           <FormError error={formState.errors?.email} />
         </div>
         <div className="mb-8">
-          <label htmlFor="mensaje" className="label-contact-form">
+          <label
+            htmlFor="mensaje"
+            className="text-sm font-bold text-gray-700 ml-1"
+          >
             Mensaje
           </label>
           <textarea
@@ -67,12 +77,10 @@ const ContactForm = () => {
             rows={6}
             required
             defaultValue={formState.data?.message}
-            className="input-contact-form resize-none"
+            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-pink-600 focus:bg-white border-2 rounded-2xl transition-all outline-none resize-none"
           ></textarea>
           <FormError error={formState.errors?.message} />
         </div>
-
-        {/* Botón de Envío usa ORANGE_COLOR como color de acción */}
         <div className="text-center">
           <ComposeSubmitButton />
         </div>

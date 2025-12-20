@@ -8,7 +8,7 @@ const NavLinks = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex space-x-2 md:space-x-8 flex-wrap justify-center">
+    <div className="ml-10 flex items-baseline space-x-8">
       {links.map((link) => {
         const isActive = pathname === link.href;
 
@@ -16,10 +16,10 @@ const NavLinks = () => {
           <Link
             key={link.href}
             href={link.href}
-            className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`hover:text-magenta hover:bg-pink-700 hover:text-white rounded-full ${
               isActive
-                ? "bg-blue-50 text-blue-700"
-                : "text-gray-700 hover:bg-gray-100"
+                ? "bg-magenta text-white px-6 py-2  font-bold  transition"
+                : "hover:text-magenta px-3 py-2 font-medium"
             }`}
             aria-current={isActive ? "page" : undefined}
           >

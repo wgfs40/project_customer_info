@@ -16,7 +16,8 @@ const BlogButtonView = ({ blogid }: { blogid: string }) => {
   return (
     <Button
       onClick={handleClick}
-      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      variant="outline"
+      className="flex items-center gap-2 font-black text-gray-900 group-hover:text-pink-600 transition-all uppercase text-[11px] tracking-widest"
     >
       Ver más
     </Button>

@@ -3,10 +3,12 @@ import Header from "@/components/layaout/header/header";
 
 const LayoutHome = async ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-16 font-sans">
+    <div className="bg-gray-50 text-gray-800">
       <Header />
-      <main className="container mx-auto px-4 max-w-5xl">{children}</main>
-      <Footer />
+      <main className="h-screen flex flex-col justify-between">
+        {children}
+        <Footer />
+      </main>
     </div>
   );
 };

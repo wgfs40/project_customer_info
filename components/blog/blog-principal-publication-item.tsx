@@ -5,7 +5,7 @@ const BlogPrincipalPublicationItem = (blog: Blog) => {
   return (
     <>
       <header className="mb-6">
-        <h3 className="text-2xl font-bold text-accent-text mb-3">
+        <h3 className="text-2xl font-bold text-pink-500 mb-3">
           Título: {blog.title}
         </h3>
         <p className="text-sm text-gray-500 mb-4">

@@ -3,6 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { Input } from "../ui/input";
+import { Search } from "lucide-react";
 
 const WAITH_BETWEEN_SEARCHES = 300;
 
@@ -22,15 +23,18 @@ const BlogSearchText = ({ placeholder }: { placeholder: string }) => {
   }, WAITH_BETWEEN_SEARCHES);
 
   return (
-    <div className="mb-6 container mx-auto px-4 bg-white p-6 rounded-lg border border-gray-200">
+    <>
+      <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-gray-400 group-focus-within:text-pink-600 transition">
+        <Search size={22} />
+      </div>
       <Input
         type="text"
         placeholder={placeholder}
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get("query") || ""}
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full pl-16 pr-8 py-6 bg-white shadow-2xl shadow-pink-100/40 border-none rounded-[2rem] text-xl outline-none focus:ring-4 ring-pink-50 transition-all placeholder:text-gray-300"
       />
-    </div>
+    </>
   );
 };
 
