@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Hero = () => {
   return (
     <section className="hero-gradient text-white py-20 px-4">
@@ -28,7 +30,7 @@ const Hero = () => {
         </div>
         <div className="md:w-1/2 flex justify-center">
           {/* SVG Ilustrativo */}
-          <svg
+          {/* <svg
             width="400"
             height="300"
             viewBox="0 0 400 300"
@@ -49,7 +51,18 @@ const Hero = () => {
               strokeWidth="8"
               strokeLinecap="round"
             />
-          </svg>
+          </svg> */}
+          {/* agregar imagen y pornerla en un circulo redondeado que se veo bien */}
+          <div className="w-72 h-72 rounded-full overflow-hidden border-4 border-white shadow-lg">
+            <span className="text-white ">
+              <Image
+                src="/images/marisol.png"
+                alt="Hero Image"
+                width={300}
+                height={300}
+              />
+            </span>
+          </div>
         </div>
       </div>
     </section>
