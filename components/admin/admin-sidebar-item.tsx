@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { IconRenderer } from "../common/icon-map-lucide";
+import { signOutUser } from "@/actions/service-auth";
+import { useRouter } from "next/dist/client/components/navigation";
+import { Button } from "../ui/button";
 
 const items = [
   {
@@ -20,6 +25,13 @@ const items = [
 ];
 
 const AdminSidebarItem = () => {
+  const { replace } = useRouter();
+  const handleSignOut = () => {
+    // Lógica para cerrar sesión de administrador si es necesario
+    signOutUser().then(() => {
+      replace("/");
+    });
+  };
   return (
     <div className="">
       {items.map((item) => (
@@ -33,11 +45,12 @@ const AdminSidebarItem = () => {
         </Link>
       ))}
       <Link
-        href="/"
+        onClick={handleSignOut}
+        href="#"
         className="flex items-center p-2 font-bold text-accent-text hover:bg-gray-700 rounded-md mt-4"
       >
         <IconRenderer iconName="LogOut" className="mr-2" />
-        Exit Admin
+        Salir de Admin
       </Link>
     </div>
   );
