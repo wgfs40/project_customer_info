@@ -32,6 +32,13 @@ const AdminSidebarItem = () => {
           {item.label}
         </Link>
       ))}
+      <Link
+        href="/"
+        className="flex items-center p-2 font-bold text-accent-text hover:bg-gray-700 rounded-md mt-4"
+      >
+        <IconRenderer iconName="LogOut" className="mr-2" />
+        Exit Admin
+      </Link>
     </div>
   );
 };
