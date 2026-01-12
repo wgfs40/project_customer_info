@@ -32,3 +32,15 @@ export type FormStateBlog = {
     published_in?: string[];
   } | null;
 };
+
+export type FormStateCategory = {
+  success: boolean;
+  message?: string;
+  data?: {
+    id?: number;
+    name?: string;
+  };
+  errors?: {
+    name?: string[];
+  } | null;
+};

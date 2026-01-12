@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   LogOut,
   Contact,
+  Box,
 } from "lucide-react";
 
 export const IconMap = {
@@ -23,6 +24,7 @@ export const IconMap = {
   Blog: Megaphone,
   LogOut: LogOut,
   Contact: Contact,
+  Category: Box,
   // ... añade más íconos si los necesitas
 } as const;
 

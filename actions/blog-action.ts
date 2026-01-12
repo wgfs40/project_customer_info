@@ -1,6 +1,6 @@
 "use server";
 
-import type { Blog, CreateBlog, UpdateBlog } from "@/types/blog";
+import type { CreateBlog, UpdateBlog } from "@/types/blog";
 
 import { createClient } from "@/lib/supabase/server";
 import { BlogFormSchema } from "@/validations/blog-validation";
@@ -135,7 +135,10 @@ export async function createBlog(formData: FormData) {
       title: blog.title,
       article_body: blog.article_body,
       main_topic: blog.main_topic,
-      published_in: blog.published_in instanceof Date ? blog.published_in.toISOString() : blog.published_in,
+      published_in:
+        blog.published_in instanceof Date
+          ? blog.published_in.toISOString()
+          : blog.published_in,
     })
     .select()
     .single();

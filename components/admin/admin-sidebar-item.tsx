@@ -5,7 +5,6 @@ import { IconRenderer } from "../common/icon-map-lucide";
 import { signOutUser } from "@/actions/service-auth";
 import { useRouter } from "next/dist/client/components/navigation";
 
-
 const items = [
   {
     label: "Dashboard",
@@ -21,6 +20,11 @@ const items = [
     label: "Contactos",
     href: "/admin/contact",
     icon: "Contact" as const,
+  },
+  {
+    label: "Categorías",
+    href: "/admin/category",
+    icon: "Category" as const,
   },
 ];
 
