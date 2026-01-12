@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import CookieConsent from "@/components/common/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +31,6 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
-        {/* El componente se puede renderizar en el Layout principal */}
-        <CookieConsent />
       </body>
     </html>
   );
