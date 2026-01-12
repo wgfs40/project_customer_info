@@ -3,6 +3,7 @@ export interface Blog {
   title: string;
   article_body: string;
   main_topic?: string;
+  categoryid?: number;
   published_in?: Date | string | null;
   created_at: Date;
 }
