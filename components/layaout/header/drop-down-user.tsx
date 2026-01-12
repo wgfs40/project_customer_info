@@ -3,11 +3,11 @@
 import { signOutUser } from "@/actions/service-auth";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,  
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,  
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogOut, User } from "lucide-react";
@@ -22,6 +22,9 @@ const DropDownUser = ({ userSession }: { userSession: Session | null }) => {
       replace("/");
     });
   };
+  const handleAdmin = () => {
+    replace("/admin");
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -33,6 +36,8 @@ const DropDownUser = ({ userSession }: { userSession: Session | null }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>{userSession?.user.email}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={handleAdmin}>Administrator</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleCloseSession}>
           Log out
