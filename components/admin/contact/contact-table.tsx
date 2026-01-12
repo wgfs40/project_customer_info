@@ -1,4 +1,5 @@
 import { getContacts } from "@/actions/contact-action";
+import Pagination from "@/components/common/pagination";
 import { Table, TableBody, TableHeader, TableRow } from "@/components/ui/table";
 import { Contact } from "@/types/contact";
 
@@ -10,7 +11,7 @@ const ContactTable = async ({
   query: string;
 }) => {
   const contacts = await getContacts(page, query, 10);
-  const totalContacts = contacts.count;
+  const totalContacts = contacts.count || 0;
   const objContacts = contacts.data as Contact[];
 
   const headers = [
@@ -63,6 +64,9 @@ const ContactTable = async ({
             ))}
           </TableBody>
         </Table>
+        <div className="p-4 flex justify-end">
+          <Pagination totalPages={totalContacts} />
+        </div>
       </div>
     </div>
   );
