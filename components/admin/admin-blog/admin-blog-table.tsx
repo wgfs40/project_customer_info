@@ -72,7 +72,7 @@ const AdminBlogTable = async ({
                   {item.main_topic}
                 </TableCell>
                 <TableCell className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatDate(item.published_in)}
+                  {item.published_in ? formatDate(item.published_in) : "-"}
                 </TableCell>
                 <TableCell className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div className="flex items-center justify-center space-x-3">
@@ -125,7 +125,7 @@ const AdminBlogTable = async ({
                 {headers[3]}:
               </div>
               <div className="col-span-1 text-right font-bold text-lg text-indigo-600">
-                {formatDate(item.published_in)}
+                {item.published_in ? formatDate(item.published_in) : "-"}
               </div>
             </div>
           </div>

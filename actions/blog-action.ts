@@ -135,7 +135,7 @@ export async function createBlog(formData: FormData) {
       title: blog.title,
       article_body: blog.article_body,
       main_topic: blog.main_topic,
-      published_in: blog.published_in?.toISOString(),
+      published_in: blog.published_in instanceof Date ? blog.published_in.toISOString() : blog.published_in,
     })
     .select()
     .single();
