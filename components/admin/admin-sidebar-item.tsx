@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IconRenderer } from "../common/icon-map-lucide";
 import { signOutUser } from "@/actions/service-auth";
 import { useRouter } from "next/dist/client/components/navigation";
-import { Button } from "../ui/button";
+
 
 const items = [
   {
@@ -18,9 +18,9 @@ const items = [
     icon: "Blog" as const,
   },
   {
-    label: "Settings",
-    href: "/admin/settings",
-    icon: "Settings" as const,
+    label: "Contactos",
+    href: "/admin/contact",
+    icon: "Contact" as const,
   },
 ];
 
