@@ -20,7 +20,7 @@ const MobileMenu = ({ userSession }: { userSession: Session | null }) => {
       <Button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="md:hidden p-2 rounded-md bg-orange-400 text-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         aria-expanded={isOpen}
       >
