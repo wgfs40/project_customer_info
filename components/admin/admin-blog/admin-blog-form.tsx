@@ -34,8 +34,7 @@ const AdminBlogForm = ({
   );
 
   const handleAction = async (formData: FormData) => {
-    formAction(formData);
-    formRef.current?.reset();
+    formAction(formData);    
     formState.success && toast.success("¡Blog guardado con éxito!");
   };
 
@@ -82,7 +81,7 @@ const AdminBlogForm = ({
           <select
             title="categorias"
             name="categoryid"
-            defaultValue={blog && blog.categoryid ? blog.categoryid : ""}
+            defaultValue={blog && blog.category_id ? blog.category_id : ""}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
           >
             {categories
@@ -95,6 +94,7 @@ const AdminBlogForm = ({
             <option value="">Seleccione una categoría</option>
           </select>
           <FormError error={formState.errors?.categoryid} />
+          <input type="hidden" name="main_topic" value="General" />
         </div>
         <div>
           <label

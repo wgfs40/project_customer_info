@@ -44,10 +44,11 @@ export async function GetBlogById(blogid: string) {
   const supabase = await createClient();
   // obtener una publicación del blog por su ID desde la base de datos
   const { data, error } = await supabase
-    .from("blogs,categories(*)")
-    .select("*")
+    .from("blogs")
+    .select("*, categories(*)", { count: "exact" })
     .eq("id", blogid)
     .single();
+  console.log("GetBlogById - Data:", data, "Error:", error);
   if (error) {
     return null;
   }
@@ -66,6 +67,7 @@ export async function updateBlog(formData: FormData) {
     id: parseInt(formData.get("id") as string),
     title: formData.get("title") as string,
     article_body: formData.get("article_body") as string,
+    category_id: parseInt(formData.get("categoryid") as string),
     main_topic: formData.get("main_topic") as string,
     published_in: formattedDate,
   };
@@ -85,6 +87,7 @@ export async function updateBlog(formData: FormData) {
     .update({
       title: blog.title,
       article_body: blog.article_body,
+      category_id: blog.category_id,
       main_topic: blog.main_topic,
       published_in: blog.published_in ? blog.published_in : null,
     })
@@ -113,6 +116,7 @@ export async function createBlog(formData: FormData) {
   const blog: CreateBlog = {
     title: formData.get("title") as string,
     article_body: formData.get("article_body") as string,
+    category_id: parseInt(formData.get("categoryid") as string),
     main_topic: formData.get("main_topic") as string,
     published_in: new Date(formData.get("published_in") as string),
   };
@@ -134,6 +138,7 @@ export async function createBlog(formData: FormData) {
     .insert({
       title: blog.title,
       article_body: blog.article_body,
+      category_id: blog.category_id,
       main_topic: blog.main_topic,
       published_in:
         blog.published_in instanceof Date
@@ -163,6 +168,7 @@ export async function registerBlog(
   prevState: FormStateBlog,
   formData: FormData
 ): Promise<FormStateBlog> {
+  console.log("Form Data Received:", Array.from(formData.entries()));
   const id = formData.get("id") as string;
   if (id && /^\d+$/.test(id)) {
     let updateData = await updateBlog(formData);

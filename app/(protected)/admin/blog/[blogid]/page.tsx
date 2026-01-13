@@ -31,9 +31,8 @@ const CreateUpdateBlogPage = async ({
 
   blog &&
     (blog.categories =
-      categories.categories.find((cat) => cat.id === blog?.categoryid) ||
+      categories.categories.find((cat) => cat.id === blog?.category_id) ||
       undefined);
-
   return (
     <div>
       <AdminBlogForm

@@ -5,7 +5,7 @@ export interface Blog {
   title: string;
   article_body: string;
   main_topic?: string;
-  categoryid?: number;
+  category_id?: number;
   categories?: Category;
   published_in?: Date | string | null;
   created_at: Date;
