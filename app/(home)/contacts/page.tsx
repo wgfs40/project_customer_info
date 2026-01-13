@@ -1,6 +1,12 @@
 import ContactForm from "@/components/contact/contact-form";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 
 const ContactPage = () => {
   return (
@@ -66,8 +72,10 @@ const ContactPage = () => {
             ))}
           </div>
         </div>
-        {/* Columna Formulario */}
-        <ContactForm />
+        <div className="space-y-12">
+          {/* Columna Formulario */}
+          <ContactForm />
+        </div>
       </div>
     </div>
   );

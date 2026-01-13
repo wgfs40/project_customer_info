@@ -20,12 +20,12 @@ const Hero = () => {
             >
               Ver Servicios
             </a>
-            <a
+            {/* <a
               href="#"
               className="border-2 border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-magenta transition"
             >
               Nuestro Portfolio
-            </a>
+            </a> */}
           </div>
         </div>
         <div className="md:w-1/2 flex justify-center">
