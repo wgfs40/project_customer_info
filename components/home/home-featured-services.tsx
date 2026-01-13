@@ -21,7 +21,7 @@ const HomeFeaturedServices = () => {
             </div>
             <div className="p-6">
               <div className="flex items-center gap-2 mb-3">
-                <span className="bg-magenta/10 text-magenta text-xs font-bold px-3 py-1 rounded-full uppercase">
+                <span className="bg-orange-500/10 text-orange-500 text-xs font-bold px-3 py-1 rounded-full uppercase">
                   Estrategia
                 </span>
                 <span className="text-gray-400 text-xs">5 min lectura</span>
@@ -49,7 +49,7 @@ const HomeFeaturedServices = () => {
             </div>
             <div className="p-6">
               <div className="flex items-center gap-2 mb-3">
-                <span className="bg-yellow/20 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                <span className="bg-orange-500/20 text-orange-700 text-xs font-bold px-3 py-1 rounded-full uppercase">
                   Diseño
                 </span>
                 <span className="text-gray-400 text-xs">8 min lectura</span>
@@ -77,7 +77,7 @@ const HomeFeaturedServices = () => {
             </div>
             <div className="p-6">
               <div className="flex items-center gap-2 mb-3">
-                <span className="bg-magenta/10 text-magenta text-xs font-bold px-3 py-1 rounded-full uppercase">
+                <span className="bg-orange-500/10 text-orange-500 text-xs font-bold px-3 py-1 rounded-full uppercase">
                   Social Media
                 </span>
                 <span className="text-gray-400 text-xs">4 min lectura</span>
