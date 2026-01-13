@@ -29,7 +29,6 @@ const AdminBlogTable = async ({
 
   const totalBlogs = blogs.totalBlogs;
   const objBlogs = blogs.blogs as Blog[];
-
   const headers = ["Titulo", "Contenido", "Tema", "Publicado En", "Acciones"];
   //const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
   return (
@@ -69,7 +68,8 @@ const AdminBlogTable = async ({
                     : item.article_body}
                 </TableCell>
                 <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.main_topic}
+                  {/* {item.main_topic} */}
+                  {item.categories?.name || "-"}
                 </TableCell>
                 <TableCell className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {item.published_in ? formatDate(item.published_in) : "-"}

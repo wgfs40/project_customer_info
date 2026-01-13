@@ -23,12 +23,14 @@ export type FormStateBlog = {
     title?: string;
     article_body?: string;
     main_topic?: string;
+    categoryid?: string;
     published_in?: string;
   };
   errors?: {
     title?: string[];
     article_body?: string[];
     main_topic?: string[];
+    categoryid?: string[];
     published_in?: string[];
   } | null;
 };

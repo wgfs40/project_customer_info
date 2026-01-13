@@ -8,6 +8,7 @@ import { useActionState, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
 import { type FormStateBlog } from "@/validations/form-state";
+import { Category } from "@/types/category";
 
 const INITIAL_FORM_STATE: FormStateBlog = {
   success: false,
@@ -19,9 +20,11 @@ const INITIAL_FORM_STATE: FormStateBlog = {
 const AdminBlogForm = ({
   blogid,
   blog,
+  categories,
 }: {
   blogid: string;
   blog: Blog | null;
+  categories: Category[];
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const { pending } = useFormStatus();
@@ -76,14 +79,22 @@ const AdminBlogForm = ({
           <label className="block text-sm font-medium text-gray-700">
             Tema
           </label>
-          <input
-            type="text"
-            placeholder="Ingrese el tema del blog"
-            defaultValue={blog ? blog.main_topic : ""}
-            name="main_topic"
+          <select
+            title="categorias"
+            name="categoryid"
+            defaultValue={blog && blog.categoryid ? blog.categoryid : ""}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-          />
-          <FormError error={formState.errors?.main_topic} />
+          >
+            {categories
+              ? categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))
+              : null}
+            <option value="">Seleccione una categoría</option>
+          </select>
+          <FormError error={formState.errors?.categoryid} />
         </div>
         <div>
           <label

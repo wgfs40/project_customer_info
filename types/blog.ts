@@ -1,9 +1,12 @@
+import { Category } from "./category";
+
 export interface Blog {
   id: number;
   title: string;
   article_body: string;
   main_topic?: string;
   categoryid?: number;
+  categories?: Category;
   published_in?: Date | string | null;
   created_at: Date;
 }

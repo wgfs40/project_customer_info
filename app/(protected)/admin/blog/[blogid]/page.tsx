@@ -1,4 +1,5 @@
 import { GetBlogById } from "@/actions/blog-action";
+import { getCategories } from "@/actions/category-action";
 import AdminBlogForm from "@/components/admin/admin-blog/admin-blog-form";
 import { Blog } from "@/types/blog";
 
@@ -9,6 +10,7 @@ const CreateUpdateBlogPage = async ({
 }) => {
   const { blogid } = await params;
   let blog: Blog | null = null;
+  const categories = await getCategories(1, "", 1000); // Obtener todas las categorías
   // validar si blog id es numerico
   const isNumeric = (value: string) => /^\d+$/.test(value);
   if (blogid && isNumeric(blogid)) {
@@ -27,9 +29,18 @@ const CreateUpdateBlogPage = async ({
     return <div>ID de blog inválido.</div>;
   }
 
+  blog &&
+    (blog.categories =
+      categories.categories.find((cat) => cat.id === blog?.categoryid) ||
+      undefined);
+
   return (
     <div>
-      <AdminBlogForm blogid={blogid || ""} blog={blog} />
+      <AdminBlogForm
+        blogid={blogid || ""}
+        blog={blog}
+        categories={categories.categories}
+      />
     </div>
   );
 };

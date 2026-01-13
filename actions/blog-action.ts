@@ -13,7 +13,7 @@ export async function GetBlogs(page: number, query: string, limit: number) {
   // obtener publicaciones del blog desde la base de datos
   const { data, error, count } = await supabase
     .from("blogs")
-    .select("*", { count: "exact" })
+    .select("*, categories(*)", { count: "exact" })
     .ilike("title", `%${query}%`)
     .range((page - 1) * limit, page * limit - 1)
     .order("created_at", { ascending: false });
@@ -44,7 +44,7 @@ export async function GetBlogById(blogid: string) {
   const supabase = await createClient();
   // obtener una publicación del blog por su ID desde la base de datos
   const { data, error } = await supabase
-    .from("blogs")
+    .from("blogs,categories(*)")
     .select("*")
     .eq("id", blogid)
     .single();
