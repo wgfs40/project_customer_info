@@ -21,7 +21,7 @@ const BlogPrincipalPublication = async ({
         blogData.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-pink-500"
+            className="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-orange-500"
           >
             <BlogPrincipalPublicationItem key={blog.id} {...blog} />
           </div>

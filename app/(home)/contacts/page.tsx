@@ -10,13 +10,13 @@ import {
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-white animate-in slide-in-from-right-4 duration-500">
+    <div className="bg-white animate-in slide-in-from-right-4 duration-500">
       <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         {/* Columna Info */}
         <div className="space-y-12">
           <div>
             <h1 className="text-5xl font-black mb-6">
-              Pongámonos en <span className="text-pink-600">Contacto</span>
+              Pongámonos en <span className="text-orange-400">Contacto</span>
             </h1>
             <p className="text-xl text-gray-600">
               ¿Tienes un proyecto en mente? Nos encantaría escucharte y ver cómo
@@ -26,14 +26,14 @@ const ContactPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div className="p-6 rounded-2xl bg-gray-50 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-pink-600 text-white flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-orange-600 text-white flex items-center justify-center">
                 <Mail size={24} />
               </div>
               <h3 className="font-bold text-lg">Escríbenos</h3>
               <p className="text-gray-500 text-sm">hola@marketingmarisol.com</p>
             </div>
             <div className="p-6 rounded-2xl bg-gray-50 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-yellow-400 text-gray-900 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-orange-200 text-gray-900 flex items-center justify-center">
                 <Phone size={24} />
               </div>
               <h3 className="font-bold text-lg">Llámanos</h3>
@@ -42,7 +42,7 @@ const ContactPage = () => {
           </div>
 
           <div className="p-8 rounded-3xl border-2 border-gray-100 flex items-center gap-6">
-            <div className="w-16 h-16 rounded-full bg-pink-50 flex items-center justify-center text-pink-600">
+            <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
               <MapPin size={32} />
             </div>
             <div>

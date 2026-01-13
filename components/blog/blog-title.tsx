@@ -4,7 +4,7 @@ const BlogTitle = () => {
   return (
     <header className="bg-gray-50 py-16 px-4 border-b border-gray-100">
       <div className="max-w-7xl mx-auto">
-        <span className="text-pink-600 font-bold uppercase tracking-widest text-sm">
+        <span className="text-orange-400 font-bold uppercase tracking-widest text-sm">
           Nuestro Conocimiento
         </span>
         <h1 className="text-4xl md:text-5xl font-black mt-2 mb-4">

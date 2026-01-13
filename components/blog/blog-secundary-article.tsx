@@ -13,7 +13,7 @@ const BlogSecundaryArticle = async () => {
           className="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
         >
           <div className="h-56 bg-gray-50 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent"></div>
             <div className="absolute top-6 left-6">
               <span
                 className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em]`}
@@ -23,7 +23,7 @@ const BlogSecundaryArticle = async () => {
             </div>
           </div>
           <div className="p-10">
-            <h3 className="text-2xl font-bold mb-4 group-hover:text-pink-600 transition leading-tight">
+            <h3 className="text-2xl font-bold mb-4 group-hover:text-orange-400 transition leading-tight">
               {article.blogs.title}
             </h3>
             <p className="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed">

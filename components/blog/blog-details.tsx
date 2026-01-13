@@ -13,7 +13,7 @@ const BlogDetails = async ({ blogid }: { blogid: string }) => {
   return (
     <div className="max-w-4xl mx-auto my-10 p-5">
       {blogDetailData ? (
-        <div className="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-pink-500">
+        <div className="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-orange-500">
           <div className="flex flex-wrap items-center gap-4 mb-6">
             <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full text-slate-500 text-xs font-medium">
               <Calendar size={14} />

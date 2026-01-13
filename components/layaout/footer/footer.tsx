@@ -4,11 +4,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-magenta rounded-full flex items-center justify-center text-yellow font-bold">
+            <div className="w-8 h-8 bg-logo rounded-full flex items-center justify-center  font-bold">
               M
             </div>
             <span className="text-2xl font-bold">
-              Dosis de <span className="text-magenta">Marketing</span>
+              Dosis de <span className="text-logo">Marketing</span>
             </span>
           </div>
           <p className="text-gray-400">
@@ -48,7 +48,7 @@ const Footer = () => {
               placeholder="Tu email"
               className="bg-gray-800 border-none rounded-l-lg px-4 py-2 w-full focus:ring-2 focus:ring-magenta outline-none"
             />
-            <button className="bg-magenta px-4 py-2 rounded-r-lg hover:bg-pink-700">
+            <button className="bg-logo px-4 py-2 rounded-r-lg hover:bg-orange-400">
               OK
             </button>
           </div>

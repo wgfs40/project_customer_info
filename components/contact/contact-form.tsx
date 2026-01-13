@@ -44,7 +44,7 @@ const ContactForm = () => {
             name="name"
             required
             defaultValue={formState.data?.name}
-            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-pink-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
+            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-orange-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
           />
           <FormError error={formState.errors?.name} />
         </div>
@@ -60,7 +60,7 @@ const ContactForm = () => {
             name="email"
             id="correo"
             defaultValue={formState.data?.email}
-            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-pink-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
+            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-orange-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
           />
           <FormError error={formState.errors?.email} />
         </div>
@@ -77,7 +77,7 @@ const ContactForm = () => {
             rows={6}
             required
             defaultValue={formState.data?.message}
-            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-pink-600 focus:bg-white border-2 rounded-2xl transition-all outline-none resize-none"
+            className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-orange-600 focus:bg-white border-2 rounded-2xl transition-all outline-none resize-none"
           ></textarea>
           <FormError error={formState.errors?.message} />
         </div>
