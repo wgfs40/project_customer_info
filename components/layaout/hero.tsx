@@ -16,7 +16,7 @@ const Hero = () => {
           <div className="flex gap-4">
             <a
               href="#servicios"
-              className="bg-yellow text-gray-900 px-8 py-3 rounded-full font-bold hover:scale-105 transition"
+              className="hero-buttton  px-8 py-3 rounded-full font-bold hover:scale-105 transition"
             >
               Ver Servicios
             </a>

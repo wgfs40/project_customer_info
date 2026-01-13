@@ -5,7 +5,7 @@ const Logo = () => {
       <div className="w-10 h-10 bg-logo rounded-full flex items-center justify-center  font-bold text-xl">
         M
       </div>
-      <span className="text-2xl font-bold tracking-tight">
+      <span className="text-logo-secondary text-2xl font-bold tracking-tight">
         Dosis de <span className="text-logo">Marketing</span>
       </span>
       {/* <Image
