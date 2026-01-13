@@ -6,7 +6,6 @@ const BlogDetail = async ({
   params: Promise<{ blogid?: string }>;
 }) => {
   const { blogid } = await params;
-
   return (
     <div>
       <BlogDetails blogid={blogid!} />

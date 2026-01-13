@@ -48,7 +48,7 @@ export async function GetBlogById(blogid: string) {
     .select("*, categories(*)", { count: "exact" })
     .eq("id", blogid)
     .single();
-  console.log("GetBlogById - Data:", data, "Error:", error);
+
   if (error) {
     return null;
   }
