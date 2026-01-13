@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marketing Marisol | Agencia Creativa Digital",
+  title: "Dosis de Marketing | Agencia Creativa Digital",
   description:
     "Agencia de marketing digital especializada en estrategias creativas para marcas modernas.",
 };
