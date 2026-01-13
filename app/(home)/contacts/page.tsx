@@ -30,7 +30,7 @@ const ContactPage = () => {
                 <Mail size={24} />
               </div>
               <h3 className="font-bold text-lg">Escríbenos</h3>
-              <p className="text-gray-500 text-sm">hola@marketingmarisol.com</p>
+              <p className="text-gray-500 text-sm">info@dosisdemarketing.com</p>
             </div>
             <div className="p-6 rounded-2xl bg-gray-50 space-y-3">
               <div className="w-12 h-12 rounded-xl bg-orange-200 text-gray-900 flex items-center justify-center">
