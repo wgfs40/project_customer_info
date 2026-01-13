@@ -8,7 +8,7 @@ const Footer = () => {
               M
             </div>
             <span className="text-2xl font-bold">
-              Marketing <span className="text-magenta">Marisol</span>
+              Dosis de <span className="text-magenta">Marketing</span>
             </span>
           </div>
           <p className="text-gray-400">

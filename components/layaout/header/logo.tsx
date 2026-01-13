@@ -6,7 +6,7 @@ const Logo = () => {
         M
       </div>
       <span className="text-2xl font-bold tracking-tight">
-        Marketing <span className="text-magenta">Marisol</span>
+        Dosis de <span className="text-magenta">Marketing</span>
       </span>
       {/* <Image
         src="/images/logo.png"
