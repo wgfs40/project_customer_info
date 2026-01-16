@@ -26,6 +26,11 @@ const items = [
     href: "/admin/category",
     icon: "Category" as const,
   },
+  {
+    label: "Archivos",
+    href: "/admin/files",
+    icon: "File" as const,
+  },
 ];
 
 const AdminSidebarItem = () => {
