@@ -35,14 +35,11 @@ const UploadFile = () => {
         );
 
         if (message !== "File uploaded successfully") {
-          console.error("Error uploading file:", message);
           continue;
         }
 
         urls.push(imageUrl);
       }
-
-      console.log("Archivos subidos:", urls);
       setFileUrls([]);
     });
   };

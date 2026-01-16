@@ -12,12 +12,7 @@ export async function ProcessUploadedFile(
   //obtejer la extension del archivo
   const fileName = fileBody.name;
   const fileExtension = fileName.slice(fileName.lastIndexOf(".") + 1);
-  const path = `${filePath ? filePath + "/" : ""}${uuidv4()}.${fileExtension}`;
-
-  console.log("fileExtension", fileExtension);
-  console.log("path", path);
-  console.log("filename", fileName);
-  console.log("contentType", fileBody.type);
+  const path = `${filePath ? filePath + "/" : ""}${uuidv4()}.${fileExtension}`;  
 
   //validar si la extension es pdf
   if (fileExtension?.toLowerCase() === "pdf") {
