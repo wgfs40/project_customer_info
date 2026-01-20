@@ -189,6 +189,9 @@ body {
   h2 {
     @apply text-[var(--font-size-h2)] font-bebas leading-[1.1] tracking-[0.04em];
   }
+  h3 {
+    @apply text-2xl font-bebas leading-[1.2] tracking-[0.03em];
+  }
 }
 
 .admin-layout-container {

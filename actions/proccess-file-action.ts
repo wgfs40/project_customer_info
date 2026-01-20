@@ -12,10 +12,13 @@ export async function ProcessUploadedFile(
   //obtejer la extension del archivo
   const fileName = fileBody.name;
   const fileExtension = fileName.slice(fileName.lastIndexOf(".") + 1);
-  const path = `${filePath ? filePath + "/" : ""}${uuidv4()}.${fileExtension}`;  
+  const path = `${filePath ? filePath + "/" : ""}${uuidv4()}.${fileExtension}`;
 
   //validar si la extension es pdf
-  if (fileExtension?.toLowerCase() === "pdf") {
+  if (
+    fileExtension?.toLowerCase() === "pdf" &&
+    fileBody.type === "application/pdf"
+  ) {
     const supabase = createClient();
     const { data, error } = await supabase.storage
       .from(bucketName)
@@ -33,17 +36,14 @@ export async function ProcessUploadedFile(
     fileExtension.toLowerCase()
   );
 
-  //comprimir la imagen si es una imagen
-  console.log("filebody type:", fileBody);
-  if (isImage) {
+  //comprimir la imagen si es una imagen  
+  if (isImage && fileBody instanceof File && (fileBody.size / 1024 / 1024) > 1) {
     try {
       const compressedFile = await imageCompression(fileBody as File, {
         maxSizeMB: 1,
         maxWidthOrHeight: 1920,
         useWebWorker: true,
       });
-
-      console.log("Compressed file size:", compressedFile);
 
       fileBody = new File([compressedFile], fileBody.name, {
         type: fileBody.type,

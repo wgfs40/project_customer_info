@@ -14,8 +14,7 @@ const UploadFile = () => {
     if (files && files.length > 0) {
       // Aquí puedes manejar los archivos seleccionados
       const fileArray = Array.from(files);
-      const newFileNames = fileArray.map((file) => URL.createObjectURL(file));
-      console.log("Archivos seleccionados:", newFileNames);
+      const newFileNames = fileArray.map((file) => URL.createObjectURL(file));      
 
       setFileUrls([...fileUrls, ...newFileNames]);
     }

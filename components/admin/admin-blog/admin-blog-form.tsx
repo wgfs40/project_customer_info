@@ -4,11 +4,12 @@ import { registerBlog } from "@/actions/blog-action";
 import FormError from "@/components/common/form-error";
 import { isNumeric } from "@/lib/utils";
 import { Blog } from "@/types/blog";
-import { useActionState, useRef } from "react";
+import { useActionState, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
 import { type FormStateBlog } from "@/validations/form-state";
 import { Category } from "@/types/category";
+import RichTextEditor from "@/components/ui/rich-text-editor";
 
 const INITIAL_FORM_STATE: FormStateBlog = {
   success: false,
@@ -30,11 +31,16 @@ const AdminBlogForm = ({
   const { pending } = useFormStatus();
   const [formState, formAction] = useActionState(
     registerBlog,
-    INITIAL_FORM_STATE
+    INITIAL_FORM_STATE,
+  );
+
+  const [editorContent, setEditorContent] = useState(
+    blog ? blog.article_body : "",
   );
 
   const handleAction = async (formData: FormData) => {
-    formAction(formData);    
+    formData.set("article_body", editorContent);
+    formAction(formData);
     formState.success && toast.success("¡Blog guardado con éxito!");
   };
 
@@ -65,13 +71,7 @@ const AdminBlogForm = ({
           <label className="block text-sm font-medium text-gray-700">
             Contenido
           </label>
-          <textarea
-            placeholder="Ingrese el contenido del blog"
-            defaultValue={blog ? blog.article_body : ""}
-            name="article_body"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-            rows={5}
-          ></textarea>
+          <RichTextEditor content={editorContent} onChange={setEditorContent} />
           <FormError error={formState.errors?.article_body} />
         </div>
         <div>
@@ -126,8 +126,8 @@ const AdminBlogForm = ({
               ? "Actualizando Blog"
               : "Actualizar Blog"
             : pending
-            ? "Creando Blog"
-            : "Crear Blog"}
+              ? "Creando Blog"
+              : "Crear Blog"}
         </button>
       </form>
     </div>

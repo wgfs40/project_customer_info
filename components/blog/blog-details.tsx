@@ -2,6 +2,7 @@ import { GetBlogById } from "@/actions/blog-action";
 import { Blog } from "@/types/blog";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
+import RichTextEditor from "../ui/rich-text-editor";
 
 const BlogDetails = async ({ blogid }: { blogid: string }) => {
   const blogDetailData = (await GetBlogById(blogid)) as Blog | null;
@@ -24,9 +25,10 @@ const BlogDetails = async ({ blogid }: { blogid: string }) => {
             {blogDetailData.title}
           </h1>
           <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-6 text-lg">
-            <p className="text-gray-700 leading-relaxed pt-5">
-              {blogDetailData.article_body}
-            </p>
+            <RichTextEditor
+              content={blogDetailData.article_body}
+              isVisibleMenuBar={false}
+            />
           </div>
         </div>
       ) : (
