@@ -71,7 +71,12 @@ const AdminBlogForm = ({
           <label className="block text-sm font-medium text-gray-700">
             Contenido
           </label>
-          <RichTextEditor content={editorContent} onChange={setEditorContent} />
+          <RichTextEditor
+            content={editorContent}
+            onChange={setEditorContent}
+            isBorder={true}
+            isVisibleMenuBar={true}
+          />
           <FormError error={formState.errors?.article_body} />
         </div>
         <div>
