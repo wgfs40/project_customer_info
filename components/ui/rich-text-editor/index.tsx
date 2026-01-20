@@ -12,12 +12,14 @@ interface RichTextEditorProps {
   content: string;
   onChange?: (content: string) => void;
   isVisibleMenuBar?: boolean;
+  isBorder: boolean;
 }
 
 const RichTextEditor = ({
   content,
   onChange,
   isVisibleMenuBar = true,
+  isBorder = false,
 }: RichTextEditorProps) => {
   const editor = useEditor({
     extensions: [
@@ -39,8 +41,7 @@ const RichTextEditor = ({
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class:
-          "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none border p-4 rounded-md",
+        class: `prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none  p-4 ${isBorder ? "border border-gray-300" : ""} rounded-md`,
       },
     },
     onUpdate: ({ editor }) => {
