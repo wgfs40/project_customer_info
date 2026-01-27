@@ -1,6 +1,7 @@
 import { GetFeaturedBlogs } from "@/actions/blog-action";
 import { FeaturedBlog } from "@/types/blog";
 import BlogButtonView from "./blog-button-view";
+import { sanitize } from "@/lib/sanitize";
 
 const BlogSecundaryArticle = async () => {
   const getFeatureBlog = await GetFeaturedBlogs();
@@ -27,7 +28,7 @@ const BlogSecundaryArticle = async () => {
               {article.blogs.title}
             </h3>
             <p className="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed">
-              {article.blogs.article_body}
+              {sanitize(article.blogs.article_body)}
             </p>
             <p className="text-xs text-gray-500">
               Publicado: {article.blogs.published_in?.toString()}

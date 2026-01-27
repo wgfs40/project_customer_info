@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { type FormStateBlog } from "@/validations/form-state";
 import { Category } from "@/types/category";
 import RichTextEditor from "@/components/ui/rich-text-editor";
+import { sanitize } from "@/lib/sanitize";
 
 const INITIAL_FORM_STATE: FormStateBlog = {
   success: false,
@@ -39,7 +40,7 @@ const AdminBlogForm = ({
   );
 
   const handleAction = async (formData: FormData) => {
-    formData.set("article_body", editorContent);
+    formData.set("article_body", sanitize(editorContent));
     formAction(formData);
     formState.success && toast.success("¡Blog guardado con éxito!");
   };

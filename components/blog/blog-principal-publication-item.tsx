@@ -1,6 +1,7 @@
 import { Blog } from "@/types/blog";
 import BlogButtonView from "./blog-button-view";
 import RichTextEditor from "../ui/rich-text-editor";
+import { sanitize } from "@/lib/sanitize";
 
 const BlogPrincipalPublicationItem = (blog: Blog) => {
   return (
@@ -13,7 +14,7 @@ const BlogPrincipalPublicationItem = (blog: Blog) => {
       </header>
       <section className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-4">
         <RichTextEditor
-          content={blog.article_body.substring(0, 200)}
+          content={sanitize(blog.article_body.substring(0, 200))}
           isVisibleMenuBar={false}
           isBorder={false}
         />
