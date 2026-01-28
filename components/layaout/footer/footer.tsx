@@ -12,8 +12,7 @@ const Footer = () => {
             </span>
           </div>
           <p className="text-gray-400">
-            Tu aliado estratégico en el mundo digital. Transformamos ideas en
-            ventas.
+            Tu aliado estratégico en el mundo digital. Transformamos ideas en ventas.
           </p>
         </div>
         <div>
@@ -48,9 +47,7 @@ const Footer = () => {
               placeholder="Tu email"
               className="bg-gray-800 border-none rounded-l-lg px-4 py-2 w-full focus:ring-2 focus:ring-magenta outline-none"
             />
-            <button className="bg-logo px-4 py-2 rounded-r-lg hover:bg-orange-400">
-              OK
-            </button>
+            <button className="bg-logo px-4 py-2 rounded-r-lg hover:bg-orange-400">OK</button>
           </div>
           <div className="flex gap-4 mt-6 text-2xl text-gray-400">
             <a href="#" title="Instagram" className="hover:text-magenta"></a>

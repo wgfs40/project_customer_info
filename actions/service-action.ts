@@ -1,6 +1,18 @@
+/**
+ * Acciones del servidor para gestionar servicios
+ * Proporciona funciones CRUD para crear, leer, actualizar y eliminar servicios
+ */
+"use server";
+
 import { Service } from "@/types/service";
 import { createClient } from "@/lib/supabase/server";
 
+/**
+ * Obtiene la lista completa de todos los servicios
+ * @returns Objeto con array de servicios y mensaje de estado
+ * @example
+ * const { services, message } = await GetServices();
+ */
 export const GetServices = async () => {
   const supabase = await createClient();
   const { data, error } = await supabase.from("services").select("*");
@@ -13,7 +25,12 @@ export const GetServices = async () => {
   }
 };
 
-// obtener los ultimos 3 servicios agregados
+/**
+ * Obtiene los últimos 3 servicios agregados
+ * @returns Objeto con array de últimos servicios y mensaje de estado
+ * @example
+ * const { services, message } = await GetLatestServices();
+ */
 export const GetLatestServices = async () => {
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -28,7 +45,15 @@ export const GetLatestServices = async () => {
   return { services, message: "Latest services fetched successfully" };
 };
 
-// crear un nuevo servicio
+/**
+ * Crea un nuevo servicio
+ * @param formData - Datos del formulario con campos: name, description, icon, color
+ * @returns Objeto con mensaje de estado de la operación
+ * @example
+ * const formData = new FormData();
+ * formData.append('name', 'Diseño Web');
+ * const { message } = await CreateService(formData);
+ */
 export const CreateService = async (formData: FormData) => {
   const supabase = await createClient();
   const { data, error } = await supabase.from("services").insert({
@@ -43,7 +68,16 @@ export const CreateService = async (formData: FormData) => {
   return { message: "Service created successfully" };
 };
 
-// actualizar un servicio
+/**
+ * Actualiza un servicio existente
+ * @param id - ID del servicio a actualizar
+ * @param formData - Datos del formulario con campos: name, description, icon, color
+ * @returns Objeto con mensaje de estado de la operación
+ * @example
+ * const formData = new FormData();
+ * formData.append('name', 'Diseño Web Avanzado');
+ * const { message } = await UpdateService('789', formData);
+ */
 export const UpdateService = async (id: string, formData: FormData) => {
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -61,7 +95,13 @@ export const UpdateService = async (id: string, formData: FormData) => {
   return { message: "Service updated successfully" };
 };
 
-// eliminar un servicio
+/**
+ * Elimina un servicio
+ * @param id - ID del servicio a eliminar
+ * @returns Objeto con mensaje de estado de la operación
+ * @example
+ * const { message } = await DeleteService('789');
+ */
 export const DeleteService = async (id: string) => {
   const supabase = await createClient();
   const { data, error } = await supabase.from("services").delete().eq("id", id);

@@ -7,21 +7,12 @@ interface ServiceCardProps {
   description: string;
   color: string;
 }
-const ServiceCard = ({
-  icon: Icon,
-  name,
-  description,
-  color,
-}: ServiceCardProps) => {
+const ServiceCard = ({ icon: Icon, name, description, color }: ServiceCardProps) => {
   return (
     <div className="bg-white p-5 rounded-xl shadow-lg text-center hover:shadow-xl transition duration-300">
       {IconValidNames(Icon) ? (
         <>
-          <IconRenderer
-            iconName={Icon}
-            size={40}
-            className={`mx-auto mb-3 ${color}`}
-          />
+          <IconRenderer iconName={Icon} size={40} className={`mx-auto mb-3 ${color}`} />
         </>
       ) : (
         <>icono no valido</>

@@ -10,5 +10,3 @@ export const ContactFormSchema = z.object({
     .min(10, "El mensaje debe tener al menos 10 caracteres")
     .max(1000, "El mensaje no puede exceder 1000 caracteres"),
 });
-
-

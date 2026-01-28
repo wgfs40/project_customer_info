@@ -19,11 +19,7 @@ const AdminHeader = ({
         aria-label={isSidebarOpen ? "Cerrar menú" : "Abrir menú"}
         className="sm:hidden p-1 rounded hover:bg-white/10 transition-colors"
       >
-        {isSidebarOpen ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <Menu className="h-6 w-6" />
-        )}
+        {isSidebarOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
       <h1 className="text-xl font-bold">header</h1>

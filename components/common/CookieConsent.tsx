@@ -46,10 +46,9 @@ const CookieConsent = () => {
               Valoramos tu privacidad
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Utilizamos cookies propias y de terceros para mejorar tu
-              experiencia, analizar el tráfico y mostrar anuncios
-              personalizados. Al hacer clic en "Aceptar", consientes el uso de
-              todas las cookies.
+              Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el
+              tráfico y mostrar anuncios personalizados. Al hacer clic en "Aceptar", consientes el
+              uso de todas las cookies.
             </p>
           </div>
 

@@ -56,9 +56,7 @@ const MobileMenu = ({ userSession }: { userSession: Session | null }) => {
                       key={link.href}
                       href={link.href}
                       className={`px-3 py-3 rounded-md text-base font-medium ${
-                        isActive
-                          ? "bg-blue-50 text-blue-700"
-                          : "text-gray-700 hover:bg-gray-50"
+                        isActive ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-50"
                       }`}
                       onClick={() => setIsOpen(false)}
                     >

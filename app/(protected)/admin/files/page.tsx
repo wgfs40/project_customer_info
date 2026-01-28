@@ -1,11 +1,11 @@
-import UploadFile from "@/components/common/upload-file"
+import UploadFile from "@/components/common/upload-file";
 
 const FilePage = () => {
   return (
     <div>
-        <UploadFile />
+      <UploadFile />
     </div>
-  )
-}
+  );
+};
 
-export default FilePage
+export default FilePage;

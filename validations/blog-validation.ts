@@ -12,9 +12,7 @@ export const BlogFormSchema: z.ZodType<BlogFormData> = z.object({
     .string()
     .min(5, "El título debe tener al menos 5 caracteres")
     .max(200, "El título no puede exceder 200 caracteres"),
-  article_body: z
-    .string()
-    .min(20, "El contenido debe tener al menos 20 caracteres"),
+  article_body: z.string().min(20, "El contenido debe tener al menos 20 caracteres"),
   main_topic: z
     .string()
     .min(2, "El tema principal debe tener al menos 2 caracteres")

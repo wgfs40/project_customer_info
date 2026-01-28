@@ -11,9 +11,7 @@ const HomeFeaturedServices = async () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Servicios Destacados
-            </h2>
+            <h2 className="text-3xl font-bold text-gray-900">Servicios Destacados</h2>
             <div className="h-1 w-20 bg-yellow mt-2"></div>
           </div>
         </div>
@@ -47,9 +45,7 @@ const HomeFeaturedServices = async () => {
                 <h3 className="text-xl font-bold mb-3 hover:text-magenta cursor-pointer transition">
                   5 Tendencias de Marketing para 2024
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {service.description}
-                </p>
+                <p className="text-gray-600 mb-4 line-clamp-3">{service.description}</p>
                 <a
                   href="#"
                   className="text-gray-900 font-bold border-b-2 border-yellow hover:border-magenta transition pb-1"

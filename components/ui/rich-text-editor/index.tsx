@@ -49,7 +49,7 @@ const RichTextEditor = ({
           alwaysPreserveAspectRatio: true,
           minWidth: 50,
           minHeight: 50,
-        },        
+        },
         allowBase64: true,
       }),
       Youtube.configure({
@@ -58,7 +58,7 @@ const RichTextEditor = ({
           width: "100%",
           height: "315",
         },
-      }),      
+      }),
     ],
     content: content,
     // Don't render immediately on the server to avoid SSR issues
@@ -77,7 +77,7 @@ const RichTextEditor = ({
   return (
     <div className="richTextEditor">
       {isVisibleMenuBar && <MenuBar editor={editor} />}
-        <EditorContent editor={editor} />
+      <EditorContent editor={editor} />
     </div>
   );
 };

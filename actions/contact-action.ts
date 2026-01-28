@@ -6,6 +6,15 @@ import { type FormState } from "@/validations/form-state";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+/**
+ * Obtiene una lista paginada de contactos enviados
+ * @param page - Número de página (basado en 1)
+ * @param query - Término de búsqueda para filtrar por nombre
+ * @param limit - Cantidad de registros por página
+ * @returns Objeto con data (array de contactos) y count (total)
+ * @example
+ * const { data, count } = await getContacts(1, "juan", 10);
+ */
 export async function getContacts(page: number, query: string, limit: number) {
   const supabase = createClient();
 
@@ -25,9 +34,19 @@ export async function getContacts(page: number, query: string, limit: number) {
   return { data, count };
 }
 
+/**
+ * Registra un nuevo contacto enviado a través del formulario de contacto (Server Action Form)
+ * Valida los datos y redirige después de la inserción
+ * @param prevState - Estado previo del formulario
+ * @param formData - Datos del formulario con campos: email, name, message
+ * @returns FormState con resultado de la validación
+ * @throws Redirige a /contacts si el registro es exitoso
+ * @example
+ * const result = await contactRegister(prevState, formData);
+ */
 export async function contactRegister(
   prevState: FormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<FormState> {
   // Your registration logic here
   const fields = {

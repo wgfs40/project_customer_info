@@ -14,13 +14,7 @@ import { Edit, Trash } from "lucide-react";
 import Pagination from "../../common/pagination";
 import Link from "next/link";
 
-const AdminBlogTable = async ({
-  page,
-  query,
-}: {
-  page: number;
-  query: string;
-}) => {
+const AdminBlogTable = async ({ page, query }: { page: number; query: string }) => {
   const blogs = await GetBlogs(page, query, 10);
 
   if (blogs.blogs.length === 0) {
@@ -98,11 +92,7 @@ const AdminBlogTable = async ({
       {/* Visible solo en móviles, oculto desde el punto de quiebre 'sm' */}
       <div className="sm:hidden space-y-4" role="list">
         {objBlogs.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white p-4 border rounded-lg shadow-sm"
-            role="listitem"
-          >
+          <div key={index} className="bg-white p-4 border rounded-lg shadow-sm" role="listitem">
             {/* Header / Título Principal */}
             <div className="flex justify-between items-center mb-2 pb-2 border-b border-gray-100">
               <span className="text-sm font-semibold text-gray-800">
@@ -113,17 +103,11 @@ const AdminBlogTable = async ({
             {/* Detalles (Filas) */}
             <div className="grid grid-cols-2 gap-2 text-sm">
               {/* Método */}
-              <div className="col-span-1 text-gray-500 font-medium">
-                {headers[2]}:
-              </div>
-              <div className="col-span-1 text-right text-gray-800">
-                {item.main_topic}
-              </div>
+              <div className="col-span-1 text-gray-500 font-medium">{headers[2]}:</div>
+              <div className="col-span-1 text-right text-gray-800">{item.main_topic}</div>
 
               {/* Monto */}
-              <div className="col-span-1 text-gray-500 font-medium">
-                {headers[3]}:
-              </div>
+              <div className="col-span-1 text-gray-500 font-medium">{headers[3]}:</div>
               <div className="col-span-1 text-right font-bold text-lg text-indigo-600">
                 {item.published_in ? formatDate(item.published_in) : "-"}
               </div>

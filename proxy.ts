@@ -7,8 +7,7 @@ const protectedRoutes = ["/admin", "/profile", "/settings"];
 
 const isProtectedRoute = (pathname: string) => {
   // Normalize pathname by removing trailing slash (unless it's just "/")
-  const normalizedPathname =
-    pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+  const normalizedPathname = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
 
   // Check if the normalized path starts with any of the protected route prefixes
   return protectedRoutes.some((route) => normalizedPathname.startsWith(route));

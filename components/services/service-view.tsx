@@ -23,9 +23,7 @@ const ServiceView = async () => {
         ))}
 
         {serviceData?.services.length === 0 && (
-          <p className="text-center col-span-full text-gray-500">
-            {serviceData.message}
-          </p>
+          <p className="text-center col-span-full text-gray-500">{serviceData.message}</p>
         )}
       </div>
     </section>

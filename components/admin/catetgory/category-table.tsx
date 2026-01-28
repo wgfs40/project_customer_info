@@ -11,13 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Category } from "@/types/category";
 
-const CategoryTable = async ({
-  page,
-  query,
-}: {
-  page: number;
-  query: string;
-}) => {
+const CategoryTable = async ({ page, query }: { page: number; query: string }) => {
   const { totalCategories, categories } = await getCategories(page, query, 10);
 
   if (categories.length === 0) {
@@ -49,12 +43,8 @@ const CategoryTable = async ({
                   {formatDate(item.created_at!)}
                 </TableCell>
                 <TableCell className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button className="text-indigo-600 hover:text-indigo-900">
-                    Editar
-                  </button>
-                  <button className="ml-2 text-red-600 hover:text-red-900">
-                    Eliminar
-                  </button>
+                  <button className="text-indigo-600 hover:text-indigo-900">Editar</button>
+                  <button className="ml-2 text-red-600 hover:text-red-900">Eliminar</button>
                 </TableCell>
               </TableRow>
             ))}

@@ -858,18 +858,11 @@ La aplicación usa **Zod** para validación de esquemas con TypeScript.
 
 ```typescript
 const BlogFormSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Mínimo 5 caracteres")
-    .max(200, "Máximo 200 caracteres"),
+  title: z.string().min(5, "Mínimo 5 caracteres").max(200, "Máximo 200 caracteres"),
 
   article_body: z.string().min(20, "Mínimo 20 caracteres"),
 
-  main_topic: z
-    .string()
-    .min(2, "Mínimo 2 caracteres")
-    .max(100, "Máximo 100 caracteres")
-    .optional(),
+  main_topic: z.string().min(2, "Mínimo 2 caracteres").max(100, "Máximo 100 caracteres").optional(),
 
   category_id: z.number().optional(),
 
@@ -881,17 +874,11 @@ const BlogFormSchema = z.object({
 
 ```typescript
 const ContactFormSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Mínimo 2 caracteres")
-    .max(100, "Máximo 100 caracteres"),
+  name: z.string().min(2, "Mínimo 2 caracteres").max(100, "Máximo 100 caracteres"),
 
   email: z.string().email("Email inválido"),
 
-  message: z
-    .string()
-    .min(10, "Mínimo 10 caracteres")
-    .max(1000, "Máximo 1000 caracteres"),
+  message: z.string().min(10, "Mínimo 10 caracteres").max(1000, "Máximo 1000 caracteres"),
 });
 ```
 
@@ -1343,8 +1330,7 @@ export async function createBlog(data: any) {
 
 ```tsx
 // ✅ Correcto - Usar URLs públicas de Supabase
-const publicURL = supabase.storage.from("images").getPublicUrl(filePath)
-  .data.publicUrl;
+const publicURL = supabase.storage.from("images").getPublicUrl(filePath).data.publicUrl;
 
 // ❌ Evitar - Exponer rutas internas
 return supabase.storage.from("images").download(filePath);

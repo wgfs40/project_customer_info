@@ -15,10 +15,7 @@ const INITIAL_FORM_STATE: FormState = {
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [formState, formAction] = useActionState(
-    contactRegister,
-    INITIAL_FORM_STATE
-  );
+  const [formState, formAction] = useActionState(contactRegister, INITIAL_FORM_STATE);
 
   const handleAction = async (formData: FormData) => {
     formAction(formData);
@@ -32,10 +29,7 @@ const ContactForm = () => {
       <h2 className="contact-form-title">Contactanos</h2>
       <form action={handleAction} className="space-y-6 relative z-10">
         <div className="space-y-2">
-          <label
-            htmlFor="nombre"
-            className="text-sm font-bold text-gray-700 ml-1"
-          >
+          <label htmlFor="nombre" className="text-sm font-bold text-gray-700 ml-1">
             Nombre
           </label>
           <input
@@ -49,10 +43,7 @@ const ContactForm = () => {
           <FormError error={formState.errors?.name} />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="correo"
-            className="text-sm font-bold text-gray-700 ml-1"
-          >
+          <label htmlFor="correo" className="text-sm font-bold text-gray-700 ml-1">
             Correo
           </label>
           <input
@@ -65,10 +56,7 @@ const ContactForm = () => {
           <FormError error={formState.errors?.email} />
         </div>
         <div className="mb-8">
-          <label
-            htmlFor="mensaje"
-            className="text-sm font-bold text-gray-700 ml-1"
-          >
+          <label htmlFor="mensaje" className="text-sm font-bold text-gray-700 ml-1">
             Mensaje
           </label>
           <textarea

@@ -17,9 +17,7 @@ const BlogDetails = async ({ blogid }: { blogid: string }) => {
       {blogDetailData ? (
         <>
           <div className="col-span-3 p-8 rounded-xl shadow-2xl border-l-8 ">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Subtítulos
-            </h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">Subtítulos</h2>
             <ul className="space-y-2">
               <li className="text-slate-700">Subtítulo 1</li>
               <li className="text-slate-700">Subtítulo 2</li>
@@ -49,10 +47,7 @@ const BlogDetails = async ({ blogid }: { blogid: string }) => {
         <p>Loading...</p>
       )}
 
-      <Link
-        href="/blog"
-        className="text-pink-500 hover:underline mt-6 inline-block"
-      >
+      <Link href="/blog" className="text-pink-500 hover:underline mt-6 inline-block">
         &larr; Back to Blog
       </Link>
     </div>

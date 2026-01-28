@@ -30,14 +30,9 @@ const AdminBlogForm = ({
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const { pending } = useFormStatus();
-  const [formState, formAction] = useActionState(
-    registerBlog,
-    INITIAL_FORM_STATE,
-  );
+  const [formState, formAction] = useActionState(registerBlog, INITIAL_FORM_STATE);
 
-  const [editorContent, setEditorContent] = useState(
-    blog ? blog.article_body : "",
-  );
+  const [editorContent, setEditorContent] = useState(blog ? blog.article_body : "");
 
   const handleAction = async (formData: FormData) => {
     formData.set("article_body", sanitize(editorContent));
@@ -48,17 +43,13 @@ const AdminBlogForm = ({
   return (
     <div>
       {/* Formulario para crear o actualizar blog */}
-      <h1>
-        {blogid && isNumeric(blogid) ? "Actualizar Blog" : "Crear Nuevo Blog"}
-      </h1>
+      <h1>{blogid && isNumeric(blogid) ? "Actualizar Blog" : "Crear Nuevo Blog"}</h1>
       <form className="space-y-4" action={handleAction} ref={formRef}>
         {/* agregar un type hidden para el id */}
         <input name="id" type="hidden" value={blogid} />
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Título
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Título</label>
           <input
             type="text"
             placeholder="Ingrese el título del blog"
@@ -69,9 +60,7 @@ const AdminBlogForm = ({
           <FormError error={formState.errors?.title} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Contenido
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Contenido</label>
           <RichTextEditor
             content={editorContent}
             onChange={setEditorContent}
@@ -81,9 +70,7 @@ const AdminBlogForm = ({
           <FormError error={formState.errors?.article_body} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Tema
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Tema</label>
           <select
             title="categorias"
             name="categoryid"
@@ -103,10 +90,7 @@ const AdminBlogForm = ({
           <input type="hidden" name="main_topic" value="General" />
         </div>
         <div>
-          <label
-            htmlFor="published_in"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="published_in" className="block text-sm font-medium text-gray-700">
             Fecha de Publicación
           </label>
           <input

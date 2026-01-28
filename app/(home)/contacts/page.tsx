@@ -1,12 +1,5 @@
 import ContactForm from "@/components/contact/contact-form";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const ContactPage = () => {
   return (
@@ -19,8 +12,8 @@ const ContactPage = () => {
               Pongámonos en <span className="text-orange-400">Contacto</span>
             </h1>
             <p className="text-xl text-gray-600">
-              ¿Tienes un proyecto en mente? Nos encantaría escucharte y ver cómo
-              podemos colaborar para hacerlo realidad.
+              ¿Tienes un proyecto en mente? Nos encantaría escucharte y ver cómo podemos colaborar
+              para hacerlo realidad.
             </p>
           </div>
 
@@ -46,12 +39,8 @@ const ContactPage = () => {
               <MapPin size={32} />
             </div>
             <div>
-              <h3 className="font-bold text-xl text-gray-900">
-                Nuestra Oficina
-              </h3>
-              <p className="text-gray-500">
-                Calle Innovación 45, Distrito Creativo
-              </p>
+              <h3 className="font-bold text-xl text-gray-900">Nuestra Oficina</h3>
+              <p className="text-gray-500">Calle Innovación 45, Distrito Creativo</p>
             </div>
           </div>
 

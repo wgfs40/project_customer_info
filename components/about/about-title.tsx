@@ -1,9 +1,7 @@
 const AboutTitle = () => {
   return (
     <div>
-      <h2
-        className={`text-3xl font-extrabold text-accent-text mb-8 text-center border-b pb-2`}
-      >
+      <h2 className={`text-3xl font-extrabold text-accent-text mb-8 text-center border-b pb-2`}>
         Acerca de Mí
       </h2>
     </div>

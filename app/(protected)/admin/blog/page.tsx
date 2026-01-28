@@ -21,10 +21,7 @@ const AdminBlogPage = async ({
       </div>
 
       {/* Tabla de Blogs con Suspense para carga diferida */}
-      <Suspense
-        key={query + currentPage}
-        fallback={<div>Loading admin blog table...</div>}
-      >
+      <Suspense key={query + currentPage} fallback={<div>Loading admin blog table...</div>}>
         <AdminBlogTable page={currentPage} query={query} />
       </Suspense>
     </div>

@@ -5,14 +5,9 @@ import { useState } from "react";
 
 const HomeCarousel = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
-  const slides = [
-    "Marketing Digital",
-    "Estrategia Farmacéutica",
-    "Análisis de Datos",
-  ];
+  const slides = ["Marketing Digital", "Estrategia Farmacéutica", "Análisis de Datos"];
   const nextSlide = () => setSliderIndex((prev) => (prev + 1) % slides.length);
-  const prevSlide = () =>
-    setSliderIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  const prevSlide = () => setSliderIndex((prev) => (prev - 1 + slides.length) % slides.length);
   return (
     <div className="relative w-full rounded-xl overflow-hidden shadow-2xl">
       <div className="h-64 md:h-96 flex items-center justify-center bg-gray-300 transition-all duration-500">

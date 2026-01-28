@@ -10,10 +10,7 @@ const LoginForm = ({ user }: { user: Session | null }) => {
     <div className="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
       <form action={signInUser} className="space-y-6">
         <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Correo electrónico
           </label>
           <input
@@ -25,10 +22,7 @@ const LoginForm = ({ user }: { user: Session | null }) => {
           />
         </div>
         <div>
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
             Contraseña
           </label>
           <input

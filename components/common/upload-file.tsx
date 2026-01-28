@@ -14,7 +14,7 @@ const UploadFile = () => {
     if (files && files.length > 0) {
       // Aquí puedes manejar los archivos seleccionados
       const fileArray = Array.from(files);
-      const newFileNames = fileArray.map((file) => URL.createObjectURL(file));      
+      const newFileNames = fileArray.map((file) => URL.createObjectURL(file));
 
       setFileUrls([...fileUrls, ...newFileNames]);
     }
@@ -28,10 +28,7 @@ const UploadFile = () => {
 
       for (const url of fileUrls) {
         const imageFile = await convertBlobUrlToFile(url);
-        const { imageUrl, message } = await ProcessUploadedFile(
-          "dosis-files",
-          imageFile
-        );
+        const { imageUrl, message } = await ProcessUploadedFile("dosis-files", imageFile);
 
         if (message !== "File uploaded successfully") {
           continue;
@@ -61,9 +58,7 @@ const UploadFile = () => {
         >
           Seleccionar Archivo
         </button>
-        <p className="mt-2 text-gray-700">
-          Archivos seleccionados: {fileUrls.length}
-        </p>
+        <p className="mt-2 text-gray-700">Archivos seleccionados: {fileUrls.length}</p>
         Archivos subidos:
         <ul className="list-disc list-inside">
           {fileUrls.map((url, index) => (
@@ -71,9 +66,7 @@ const UploadFile = () => {
           ))}
         </ul>
         <p className="mt-2 text-gray-700">
-          <label className="ml-2 text-sm text-gray-600">
-            (Se permiten múltiples archivos)
-          </label>
+          <label className="ml-2 text-sm text-gray-600">(Se permiten múltiples archivos)</label>
           <label className="ml-2 text-sm text-gray-600 block mt-1">
             Formatos permitidos: jpg, png, pdf, docx
           </label>

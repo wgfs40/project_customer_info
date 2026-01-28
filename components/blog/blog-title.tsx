@@ -7,12 +7,10 @@ const BlogTitle = () => {
         <span className="text-orange-400 font-bold uppercase tracking-widest text-sm">
           Nuestro Conocimiento
         </span>
-        <h1 className="text-4xl md:text-5xl font-black mt-2 mb-4">
-          El Blog de Marketing Marisol
-        </h1>
+        <h1 className="text-4xl md:text-5xl font-black mt-2 mb-4">El Blog de Marketing Marisol</h1>
         <p className="text-gray-600 text-lg max-w-xl">
-          Consejos, noticias y estrategias para emprendedores que quieren
-          dominar el entorno digital.
+          Consejos, noticias y estrategias para emprendedores que quieren dominar el entorno
+          digital.
         </p>
       </div>
       <div className="max-w-2xl mx-auto mt-12 relative group">

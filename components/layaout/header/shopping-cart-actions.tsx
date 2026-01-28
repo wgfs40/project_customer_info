@@ -1,11 +1,7 @@
 import { ShoppingCart } from "lucide-react";
 import { Session } from "@supabase/supabase-js";
 
-const ShoppingCartAction = ({
-  userSession,
-}: {
-  userSession: Session | null;
-}) => {
+const ShoppingCartAction = ({ userSession }: { userSession: Session | null }) => {
   return (
     <>
       {userSession && (

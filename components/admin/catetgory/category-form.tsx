@@ -15,10 +15,7 @@ const INITIAL_FORM_STATE: FormStateCategory = {
 
 const CategoryForm = ({ category }: { category: Category | null }) => {
   const { pending } = useFormStatus();
-  const [formState, formAction] = useActionState(
-    registerCategory,
-    INITIAL_FORM_STATE
-  );
+  const [formState, formAction] = useActionState(registerCategory, INITIAL_FORM_STATE);
 
   const handleAction = async (formData: FormData) => {
     formAction(formData);
@@ -37,9 +34,7 @@ const CategoryForm = ({ category }: { category: Category | null }) => {
           value={isNumeric(String(category?.id)) ? category?.id : ""}
         />
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Name
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Name</label>
           <Input
             type="text"
             name="name"

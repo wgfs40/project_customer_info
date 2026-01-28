@@ -3,24 +3,12 @@ import Pagination from "@/components/common/pagination";
 import { Table, TableBody, TableHeader, TableRow } from "@/components/ui/table";
 import { Contact } from "@/types/contact";
 
-const ContactTable = async ({
-  page,
-  query,
-}: {
-  page: number;
-  query: string;
-}) => {
+const ContactTable = async ({ page, query }: { page: number; query: string }) => {
   const contacts = await getContacts(page, query, 10);
   const totalContacts = contacts.count || 0;
   const objContacts = contacts.data as Contact[];
 
-  const headers = [
-    "Nombre",
-    "Correo Electrónico",
-    "Mensaje",
-    "Fecha",
-    "Acciones",
-  ];
+  const headers = ["Nombre", "Correo Electrónico", "Mensaje", "Fecha", "Acciones"];
   return (
     <div className="overflow-x-auto bg-white shadow-xl rounded-xl">
       <div className="hidden sm:block rounded-lg border bg-white shadow-md overflow-hidden">
@@ -43,9 +31,7 @@ const ContactTable = async ({
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {item.name}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {item.email}
-                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {item.message}
                 </td>
@@ -53,12 +39,8 @@ const ContactTable = async ({
                   {item.created_at}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button className="text-indigo-600 hover:text-indigo-900">
-                    Edit
-                  </button>
-                  <button className="ml-2 text-red-600 hover:text-red-900">
-                    Delete
-                  </button>
+                  <button className="text-indigo-600 hover:text-indigo-900">Edit</button>
+                  <button className="ml-2 text-red-600 hover:text-red-900">Delete</button>
                 </td>
               </TableRow>
             ))}

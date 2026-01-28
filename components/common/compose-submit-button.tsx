@@ -23,9 +23,7 @@ const ComposeSubmitButton = ({
         }`}
         style={{ backgroundColor: "var(--color-primary-btn-cta-background)" }}
       >
-        {pending
-          ? buttonTextPending || " (Enviando...)"
-          : buttonText || "Registrar Contacto"}
+        {pending ? buttonTextPending || " (Enviando...)" : buttonText || "Registrar Contacto"}
       </Button>
     </div>
   );

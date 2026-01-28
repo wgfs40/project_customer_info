@@ -9,7 +9,7 @@ const BlogButtonView = ({ blogid }: { blogid: string }) => {
   const { replace } = useRouter();
 
   const handleClick = () => {
-    // Navigate to the blog detail page    
+    // Navigate to the blog detail page
     replace(pathname + "/" + blogid);
   };
   return (

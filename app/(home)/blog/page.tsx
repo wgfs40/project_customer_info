@@ -17,10 +17,7 @@ const BlogPage = async ({
       <BlogTitle />
       <BlogSecundaryArticle />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Suspense
-          key={query + currentPage}
-          fallback={<div>Loading main blog publication...</div>}
-        >
+        <Suspense key={query + currentPage} fallback={<div>Loading main blog publication...</div>}>
           <BlogPrincipalPublication query={query} currentPage={currentPage} />
         </Suspense>
       </main>

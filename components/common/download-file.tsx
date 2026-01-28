@@ -7,9 +7,7 @@ const DownloadFile = () => {
         aria-label="descargar archivo"
         className="w-full p-2 border border-gray-300 rounded"
       />
-      <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
-        Descargar Archivo
-      </button>
+      <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Descargar Archivo</button>
     </div>
   );
 };

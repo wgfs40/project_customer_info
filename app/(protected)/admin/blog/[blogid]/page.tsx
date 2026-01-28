@@ -3,11 +3,7 @@ import { getCategories } from "@/actions/category-action";
 import AdminBlogForm from "@/components/admin/admin-blog/admin-blog-form";
 import { Blog } from "@/types/blog";
 
-const CreateUpdateBlogPage = async ({
-  params,
-}: {
-  params: Promise<{ blogid?: string }>;
-}) => {
+const CreateUpdateBlogPage = async ({ params }: { params: Promise<{ blogid?: string }> }) => {
   const { blogid } = await params;
   let blog: Blog | null = null;
   const categories = await getCategories(1, "", 1000); // Obtener todas las categorías
@@ -31,15 +27,10 @@ const CreateUpdateBlogPage = async ({
 
   blog &&
     (blog.categories =
-      categories.categories.find((cat) => cat.id === blog?.category_id) ||
-      undefined);
+      categories.categories.find((cat) => cat.id === blog?.category_id) || undefined);
   return (
     <div>
-      <AdminBlogForm
-        blogid={blogid || ""}
-        blog={blog}
-        categories={categories.categories}
-      />
+      <AdminBlogForm blogid={blogid || ""} blog={blog} categories={categories.categories} />
     </div>
   );
 };

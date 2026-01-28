@@ -8,6 +8,15 @@ import { z } from "zod";
 import { type FormStateBlog } from "@/validations/form-state";
 import { redirect } from "next/navigation";
 
+/**
+ * Obtiene una lista paginada de publicaciones del blog
+ * @param page - Número de página (basado en 1)
+ * @param query - Término de búsqueda para filtrar por título
+ * @param limit - Cantidad de registros por página
+ * @returns Objeto con totalBlogs y array de blogs
+ * @example
+ * const { totalBlogs, blogs } = await GetBlogs(1, "typescript", 10);
+ */
 export async function GetBlogs(page: number, query: string, limit: number) {
   const supabase = await createClient();
   // obtener publicaciones del blog desde la base de datos
@@ -26,6 +35,12 @@ export async function GetBlogs(page: number, query: string, limit: number) {
   return { totalBlogs, blogs };
 }
 
+/**
+ * Obtiene las publicaciones destacadas del blog
+ * @returns Array de publicaciones marcadas como destacadas y activas
+ * @example
+ * const featured = await GetFeaturedBlogs();
+ */
 export async function GetFeaturedBlogs() {
   const supabase = await createClient();
   // obtener publicaciones destacadas del blog desde la base de datos
@@ -40,6 +55,13 @@ export async function GetFeaturedBlogs() {
   return data || [];
 }
 
+/**
+ * Obtiene una publicación del blog específica por ID
+ * @param blogid - ID única de la publicación del blog
+ * @returns Objeto blog con datos de categoría asociada o null si no existe
+ * @example
+ * const blog = await GetBlogById("123");
+ */
 export async function GetBlogById(blogid: string) {
   const supabase = await createClient();
   // obtener una publicación del blog por su ID desde la base de datos
@@ -55,6 +77,16 @@ export async function GetBlogById(blogid: string) {
   return data || null;
 }
 
+/**
+ * Actualiza una publicación del blog existente
+ * @param formData - Datos del formulario con campos: id, title, article_body, categoryid, main_topic, published_in
+ * @returns Objeto con success, data (blog actualizado), message, y errors si ocurren
+ * @example
+ * const formData = new FormData();
+ * formData.append('id', '123');
+ * formData.append('title', 'Nuevo Título');
+ * const result = await updateBlog(formData);
+ */
 export async function updateBlog(formData: FormData) {
   const supabase = await createClient();
   let formattedDate: string | null = null;
@@ -100,6 +132,16 @@ export async function updateBlog(formData: FormData) {
       message: "Error updating blog",
       errors: { general: [error.message] },
       data: blog,
+      /**
+       * Crea una nueva publicación del blog
+       * @param formData - Datos del formulario con campos: title, article_body, categoryid, main_topic, published_in
+       * @returns Objeto con success, data (blog creado), message, y errors si ocurren
+       * @example
+       * const formData = new FormData();
+       * formData.append('title', 'Mi Primer Blog');
+       * formData.append('article_body', 'Contenido...');
+       * const result = await createBlog(formData);
+       */
     };
   }
   return {
@@ -141,9 +183,7 @@ export async function createBlog(formData: FormData) {
       category_id: blog.category_id,
       main_topic: blog.main_topic,
       published_in:
-        blog.published_in instanceof Date
-          ? blog.published_in.toISOString()
-          : blog.published_in,
+        blog.published_in instanceof Date ? blog.published_in.toISOString() : blog.published_in,
     })
     .select()
     .single();
@@ -166,7 +206,7 @@ export async function createBlog(formData: FormData) {
 
 export async function registerBlog(
   prevState: FormStateBlog,
-  formData: FormData
+  formData: FormData,
 ): Promise<FormStateBlog> {
   console.log("Form Data Received:", Array.from(formData.entries()));
   const id = formData.get("id") as string;

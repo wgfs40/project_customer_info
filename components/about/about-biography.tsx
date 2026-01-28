@@ -13,19 +13,16 @@ const AboutBiography = () => {
             Juan Pérez, Especialista en Dosis
           </h3>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Soy el fundador de Dosis de Marketing. Mi trayectoria se centra en
-            la intersección de la **tecnología, la salud y el marketing
-            digital**. Después de más de una década trabajando en agencias de
-            publicidad y el sector farmacéutico, desarrollé una metodología
-            única que se enfoca en la precisión, la ética y la medición rigurosa
-            de resultados. Mi objetivo es simplificar la complejidad del
-            marketing digital para empresas que operan en mercados altamente
-            regulados.
+            Soy el fundador de Dosis de Marketing. Mi trayectoria se centra en la intersección de la
+            **tecnología, la salud y el marketing digital**. Después de más de una década trabajando
+            en agencias de publicidad y el sector farmacéutico, desarrollé una metodología única que
+            se enfoca en la precisión, la ética y la medición rigurosa de resultados. Mi objetivo es
+            simplificar la complejidad del marketing digital para empresas que operan en mercados
+            altamente regulados.
           </p>
           <p className="text-gray-600 leading-relaxed">
-            Creo firmemente que la mejor estrategia es aquella que se basa en
-            datos y se entrega en la &quot;dosis&quot; justa: sin exageraciones,
-            solo resultados probados.
+            Creo firmemente que la mejor estrategia es aquella que se basa en datos y se entrega en
+            la &quot;dosis&quot; justa: sin exageraciones, solo resultados probados.
           </p>
         </div>
       </div>

@@ -10,8 +10,8 @@ const Hero = () => {
             <span className="text-yellow italic">tu marca digital</span>
           </h1>
           <p className="text-xl mb-8 opacity-90">
-            Estrategias personalizadas que combinan creatividad magenta y
-            energía amarilla para resultados extraordinarios.
+            Estrategias personalizadas que combinan creatividad magenta y energía amarilla para
+            resultados extraordinarios.
           </p>
           <div className="flex gap-4">
             <a
@@ -55,12 +55,7 @@ const Hero = () => {
           {/* agregar imagen y pornerla en un circulo redondeado que se veo bien */}
           <div className="w-72 h-72 rounded-full overflow-hidden border-4 border-white shadow-lg">
             <span className="text-white ">
-              <Image
-                src="/images/marisol.png"
-                alt="Hero Image"
-                width={300}
-                height={300}
-              />
+              <Image src="/images/marisol.png" alt="Hero Image" width={300} height={300} />
             </span>
           </div>
         </div>
