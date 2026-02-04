@@ -11,12 +11,12 @@ const CreateUpdateBlogPage = async ({ params }: { params: Promise<{ blogid?: str
   const isNumeric = (value: string) => /^\d+$/.test(value);
   if (blogid && isNumeric(blogid)) {
     // Lógica para actualizar un blog existente
-    const getBlogById = (await GetBlogById(blogid || "")) as Blog | null;
-    if (!getBlogById) {
+    const getBlogById = await GetBlogById(blogid || "");
+    if (!getBlogById.data && !getBlogById.success) {
       return <div>Blog no encontrado.</div>;
     }
 
-    blog = getBlogById;
+    blog = (getBlogById.data as Blog) || null;
   } else if (blogid === "create") {
     // Lógica para crear un nuevo blog
     console.log("Crear un nuevo blog");

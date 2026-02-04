@@ -7,6 +7,8 @@ import { BlogFormSchema } from "@/validations/blog-validation";
 import { z } from "zod";
 import { type FormStateBlog } from "@/validations/form-state";
 import { redirect } from "next/navigation";
+import { ServerActionResponse } from "@/lib/server-error-handler";
+import { toAppError } from "@/lib/errors";
 
 /**
  * Obtiene una lista paginada de publicaciones del blog
@@ -17,7 +19,11 @@ import { redirect } from "next/navigation";
  * @example
  * const { totalBlogs, blogs } = await GetBlogs(1, "typescript", 10);
  */
-export async function GetBlogs(page: number, query: string, limit: number) {
+export async function GetBlogs(
+  page: number,
+  query: string,
+  limit: number,
+): Promise<ServerActionResponse> {
   const supabase = await createClient();
   // obtener publicaciones del blog desde la base de datos
   const { data, error, count } = await supabase
@@ -28,11 +34,11 @@ export async function GetBlogs(page: number, query: string, limit: number) {
     .order("created_at", { ascending: false });
 
   if (error) {
-    return { totalBlogs: 0, blogs: [] };
+    return { success: false, error: toAppError(error), data: { totalBlogs: 0, blogs: [] } };
   }
   const totalBlogs = count || 0;
   const blogs = data || [];
-  return { totalBlogs, blogs };
+  return { success: true, data: { totalBlogs, blogs } };
 }
 
 /**
@@ -41,7 +47,7 @@ export async function GetBlogs(page: number, query: string, limit: number) {
  * @example
  * const featured = await GetFeaturedBlogs();
  */
-export async function GetFeaturedBlogs() {
+export async function GetFeaturedBlogs(): Promise<ServerActionResponse> {
   const supabase = await createClient();
   // obtener publicaciones destacadas del blog desde la base de datos
   const { data, error } = await supabase
@@ -50,9 +56,9 @@ export async function GetFeaturedBlogs() {
     .eq("active", true)
     .order("order", { ascending: false });
   if (error) {
-    return [];
+    return { success: false, error: toAppError(error), data: null };
   }
-  return data || [];
+  return { success: true, data: data || [] };
 }
 
 /**
@@ -62,7 +68,7 @@ export async function GetFeaturedBlogs() {
  * @example
  * const blog = await GetBlogById("123");
  */
-export async function GetBlogById(blogid: string) {
+export async function GetBlogById(blogid: string): Promise<ServerActionResponse> {
   const supabase = await createClient();
   // obtener una publicación del blog por su ID desde la base de datos
   const { data, error } = await supabase
@@ -72,9 +78,9 @@ export async function GetBlogById(blogid: string) {
     .single();
 
   if (error) {
-    return null;
+    return { success: false, error: toAppError(error), data: null };
   }
-  return data || null;
+  return { success: true, data };
 }
 
 /**

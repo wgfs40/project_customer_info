@@ -17,12 +17,12 @@ import Link from "next/link";
 const AdminBlogTable = async ({ page, query }: { page: number; query: string }) => {
   const blogs = await GetBlogs(page, query, 10);
 
-  if (blogs.blogs.length === 0) {
+  if (!blogs.data || (blogs.data as { totalBlogs: number; blogs: Blog[] }).blogs.length === 0) {
     return <div>No hay publicaciones de blog disponibles.</div>;
   }
 
-  const totalBlogs = blogs.totalBlogs;
-  const objBlogs = blogs.blogs as Blog[];
+  const totalBlogs = (blogs.data as { totalBlogs: number; blogs: Blog[] }).totalBlogs;
+  const objBlogs = (blogs.data as { totalBlogs: number; blogs: Blog[] }).blogs;
   const headers = ["Titulo", "Contenido", "Tema", "Publicado En", "Acciones"];
   //const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
   return (

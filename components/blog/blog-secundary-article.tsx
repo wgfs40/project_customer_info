@@ -5,7 +5,12 @@ import { sanitize } from "@/lib/sanitize";
 
 const BlogSecundaryArticle = async () => {
   const getFeatureBlog = await GetFeaturedBlogs();
-  const getFeatureBlogData = getFeatureBlog as FeaturedBlog[];
+
+  if (!getFeatureBlog.success || !getFeatureBlog.data) {
+    return <div>No featured articles available.</div>;
+  }
+
+  const getFeatureBlogData = getFeatureBlog.data as FeaturedBlog[];
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {getFeatureBlogData.map((article, index) => (
