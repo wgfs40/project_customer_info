@@ -3,8 +3,9 @@
 import { createClient } from "@/lib/supabase/client";
 import { ContactFormSchema } from "@/validations/contact-validation";
 import { type FormState } from "@/validations/form-state";
-import { redirect } from "next/navigation";
 import { z } from "zod";
+import { verifyCaptchaToken } from "./recapcha-action";
+import { revalidatePath } from "next/cache";
 
 /**
  * Obtiene una lista paginada de contactos enviados
@@ -47,7 +48,28 @@ export async function getContacts(page: number, query: string, limit: number) {
 export async function contactRegister(
   prevState: FormState,
   formData: FormData,
+  token: string,
 ): Promise<FormState> {
+  if (!token) {
+    return {
+      success: false,
+      message: "Captcha token is missing",
+      token: token,
+      data: {},
+    };
+  }
+
+  //verificar el token del captcha
+  const captchaResult = await verifyCaptchaToken(token);
+  if (!captchaResult.success) {
+    return {
+      success: false,
+      message: "Captcha verification failed",
+      token: token,
+      data: {},
+    };
+  }
+
   // Your registration logic here
   const fields = {
     email: formData.get("email") as string,
@@ -62,6 +84,7 @@ export async function contactRegister(
     return {
       success: false,
       message: "Validation failed",
+      token: token,
       errors: flattenedErrors.fieldErrors,
       data: fields,
     };
@@ -80,5 +103,12 @@ export async function contactRegister(
     throw new Error("Failed to register contact");
   }
 
-  redirect("/contacts");
+  revalidatePath("/contacts");
+
+  return {
+    success: true,
+    message: "Contact registered successfully",
+    token: token,
+    data: fields,
+  };
 }

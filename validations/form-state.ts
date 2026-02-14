@@ -1,19 +1,22 @@
-export type FormState = {
-  success: boolean;
-  message?: string;
-  data?: {
-    identifier?: string;
-    name?: string;
-    email?: string;
-    message?: string;
-  };
-  errors?: {
-    identifier?: string[];
-    name?: string[];
-    email?: string[];
-    message?: string[];
-  } | null;
-};
+export type FormState =
+  | {
+      success: boolean;
+      message?: string;
+      token?: string;
+      data?: {
+        identifier?: string;
+        name?: string;
+        email?: string;
+        message?: string;
+      };
+      errors?: {
+        identifier?: string[];
+        name?: string[];
+        email?: string[];
+        message?: string[];
+      } | null;
+    }
+  | undefined;
 
 export type FormStateBlog = {
   success: boolean;

@@ -5,11 +5,13 @@ import Link from "next/link";
 import RichTextEditor from "../ui/rich-text-editor";
 
 const BlogDetails = async ({ blogid }: { blogid: string }) => {
-  const blogDetailData = (await GetBlogById(blogid)) as Blog | null;
+  const blogDetailData = await GetBlogById(blogid);
 
   if (!blogDetailData) {
     return <p>Blog not found.</p>;
   }
+
+  const blogDetail = blogDetailData.data as Blog;
 
   return (
     // agregar dos columna una de los subtitulos y otra del contenido
@@ -28,15 +30,15 @@ const BlogDetails = async ({ blogid }: { blogid: string }) => {
             <div className="flex flex-wrap items-center gap-4 mb-6">
               <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full text-slate-500 text-xs font-medium">
                 <Calendar size={14} />
-                {blogDetailData.published_in?.toString()}
+                {blogDetail.published_in?.toString()}
               </div>
             </div>
             <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-8">
-              {blogDetailData.title}
+              {blogDetail.title}
             </h1>
             <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-6 text-lg">
               <RichTextEditor
-                content={blogDetailData.article_body}
+                content={blogDetail.article_body}
                 isVisibleMenuBar={false}
                 isBorder={false}
               />

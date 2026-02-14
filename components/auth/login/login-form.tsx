@@ -1,3 +1,6 @@
+"use client";
+
+import { getCaptchaToken } from "@/actions/recapcha-action";
 import { signInUser } from "@/actions/service-auth";
 import ComposeSubmitButton from "@/components/common/compose-submit-button";
 import { Session } from "@supabase/supabase-js";
@@ -8,7 +11,13 @@ const LoginForm = ({ user }: { user: Session | null }) => {
 
   return (
     <div className="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-      <form action={signInUser} className="space-y-6">
+      <form
+        action={async (formData: FormData) => {
+          const token = await getCaptchaToken();
+          await signInUser(token, formData);
+        }}
+        className="space-y-6"
+      >
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Correo electrónico

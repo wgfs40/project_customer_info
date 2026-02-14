@@ -1,26 +1,47 @@
 "use client";
 import { contactRegister } from "@/actions/contact-action";
-import { useActionState, useRef } from "react";
+import { useActionState, useRef, useTransition } from "react";
 import ComposeSubmitButton from "../common/compose-submit-button";
 import FormError from "../common/form-error";
 import { type FormState } from "@/validations/form-state";
 import { toast } from "sonner";
+import { getCaptchaToken } from "@/actions/recapcha-action";
 
 const INITIAL_FORM_STATE: FormState = {
   success: false,
   message: "",
+  token: "",
   data: {},
   errors: {},
 };
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [formState, formAction] = useActionState(contactRegister, INITIAL_FORM_STATE);
+  const [isPending, startTransition] = useTransition();
+
+  const regAction = async (prevState: FormState, formData: FormData): Promise<FormState> => {
+    const token = await getCaptchaToken();
+    if (!token) {
+      toast.error("Error al obtener el token de reCAPTCHA. Por favor, inténtalo de nuevo.");
+      return prevState;
+    }
+    return contactRegister(prevState, formData, token);
+  };
+
+  const [formState, formAction] = useActionState(regAction, INITIAL_FORM_STATE);
 
   const handleAction = async (formData: FormData) => {
-    formAction(formData);
+    const token = await getCaptchaToken();
+    if (!token) {
+      toast.error("Error al obtener el token de reCAPTCHA. Por favor, inténtalo de nuevo.");
+      return;
+    }
+    startTransition(() => {
+      formAction(formData);
+    });
+    toast.success("¡Mensaje enviado con éxito!");
+    console.log("Form State:", formState);
     formRef.current?.reset();
-    formState.success && toast.success("¡Mensaje enviado con éxito!");
   };
 
   return (
@@ -37,10 +58,10 @@ const ContactForm = () => {
             id="nombre"
             name="name"
             required
-            defaultValue={formState.data?.name}
+            defaultValue={formState?.data?.name}
             className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-orange-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
           />
-          <FormError error={formState.errors?.name} />
+          <FormError error={formState?.errors?.name} />
         </div>
         <div className="mb-5">
           <label htmlFor="correo" className="text-sm font-bold text-gray-700 ml-1">
@@ -50,10 +71,10 @@ const ContactForm = () => {
             type="email"
             name="email"
             id="correo"
-            defaultValue={formState.data?.email}
+            defaultValue={formState?.data?.email}
             className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-orange-600 focus:bg-white border-2 rounded-2xl transition-all outline-none"
           />
-          <FormError error={formState.errors?.email} />
+          <FormError error={formState?.errors?.email} />
         </div>
         <div className="mb-8">
           <label htmlFor="mensaje" className="text-sm font-bold text-gray-700 ml-1">
@@ -64,13 +85,13 @@ const ContactForm = () => {
             name="message"
             rows={6}
             required
-            defaultValue={formState.data?.message}
+            defaultValue={formState?.data?.message}
             className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-orange-600 focus:bg-white border-2 rounded-2xl transition-all outline-none resize-none"
           ></textarea>
-          <FormError error={formState.errors?.message} />
+          <FormError error={formState?.errors?.message} />
         </div>
         <div className="text-center">
-          <ComposeSubmitButton />
+          <ComposeSubmitButton isPending={isPending} />
         </div>
       </form>
     </div>

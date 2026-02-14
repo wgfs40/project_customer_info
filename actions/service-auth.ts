@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { verifyCaptchaToken } from "./recapcha-action";
 
 /**
  * Configuración de opciones para cookies de sesión
@@ -60,7 +61,14 @@ export const signNewUser = async (email: string, password: string) => {
  * formData.append('password', 'password123');
  * await signInUser(formData);
  */
-export const signInUser = async (formData: FormData) => {
+export const signInUser = async (token: string | null, formData: FormData) => {
+  if (!token) {
+    throw new Error("reCAPTCHA token is required");
+  }
+
+  // verificar el token de reCAPTCHA antes de intentar iniciar sesión
+  const captchaResult = await verifyCaptchaToken(token);
+
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithPassword({
     email: formData.get("email") as string,
